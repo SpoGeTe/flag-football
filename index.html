@@ -1,0 +1,1198 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flag Football – Playbook</title>
+<meta name="description" content="Flag Football im Sportunterricht: Regeln, Technik, Passrouten, Verteidigung, Quiz und ein eigenes digitales Playbook – ohne Anmeldung.">
+<meta name="theme-color" content="#0d1b2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Flag Playbook">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root {
+  --nacht: #0d1b2e;
+  --nacht2: #14263f;
+  --karte: #182d4a;
+  --rand: #2a4466;
+  --text: #f2f5fa;
+  --leise: #a9b8cc;
+  --rasen: #2f8f4e;
+  --rasen2: #287f44;
+  --gelb: #ffd23f;
+  --rot: #ef4b4b;
+  --blau: #3d8bff;
+  --gruen: #36d17c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; }
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--nacht); color: var(--text); font-size: 17px; line-height: 1.5;
+}
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--gelb); outline-offset: 2px; }
+a { color: var(--gelb); }
+input, select, textarea { font: inherit; color: var(--text); background: var(--nacht2); border: 1px solid var(--rand); border-radius: 10px; padding: 9px 12px; }
+.titel-schrift { font-family: "Arial Black", "Helvetica Neue", Impact, system-ui, sans-serif; text-transform: uppercase; letter-spacing: .02em; }
+
+/* Kopf */
+.kopf { position: sticky; top: 0; z-index: 30; background: rgba(13, 27, 46, .95); backdrop-filter: blur(8px); border-bottom: 3px solid var(--gelb); padding-top: env(safe-area-inset-top); }
+.kopf-innen { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 12px; padding: 8px 14px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; white-space: nowrap; }
+.logo .flagge { width: 30px; height: 30px; }
+.nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+.nav::-webkit-scrollbar { display: none; }
+.nav button { padding: 8px 12px; border-radius: 8px; font-weight: 800; font-size: .9rem; color: var(--leise); white-space: nowrap; }
+.nav button.aktiv { background: var(--gelb); color: var(--nacht); }
+main { max-width: 1100px; margin: 0 auto; padding: 18px 14px 70px; }
+h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.05; margin: 0 0 10px; }
+h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); margin: 0 0 10px; }
+h3 { font-size: 1.1rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+.leise { color: var(--leise); }
+.klein { font-size: .88rem; }
+.karte { background: var(--karte); border: 1px solid var(--rand); border-radius: 18px; padding: 18px; margin-bottom: 16px; }
+.raster { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.knopf { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 9px 18px; border-radius: 12px; background: var(--gelb); color: var(--nacht); font-weight: 900; }
+.knopf:active { transform: translateY(2px); }
+.knopf.zweit { background: var(--nacht2); color: var(--text); border: 1px solid var(--rand); }
+.knopf.rot { background: var(--rot); color: #fff; }
+.knopf.klein { min-height: 38px; padding: 6px 12px; font-size: .9rem; }
+.reihe { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.chip { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: .75rem; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; background: var(--nacht2); border: 1px solid var(--rand); }
+.chip.pass { background: #1f4d8f; border-color: #3d8bff; }
+.chip.lauf { background: #7a2e2e; border-color: var(--rot); }
+.chip.trick { background: #6b5410; border-color: var(--gelb); }
+.chip.eigen { background: #1e5a3a; border-color: var(--gruen); }
+
+/* Start */
+.held {
+  position: relative; overflow: hidden; border-radius: 22px; padding: 34px 24px; margin-bottom: 20px;
+  background: repeating-linear-gradient(90deg, var(--rasen) 0 60px, var(--rasen2) 60px 120px);
+  border: 3px solid #fff3;
+}
+.held::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,27,46,.92), rgba(13,27,46,.55) 60%, rgba(13,27,46,.2)); }
+.held > * { position: relative; z-index: 1; max-width: 620px; }
+.held .gelb { color: var(--gelb); }
+.held svg.deko { position: absolute; right: 2%; bottom: -10px; width: min(42%, 380px); z-index: 1; opacity: .95; }
+@media (max-width: 760px) { .held svg.deko { width: 120px; right: -14px; bottom: auto; top: -10px; opacity: .35; } }
+.module { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.modul { text-align: left; background: var(--karte); border: 1px solid var(--rand); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; transition: transform .12s, border-color .12s; }
+.modul:hover { transform: translateY(-2px); border-color: var(--gelb); }
+.modul .nr { font-size: 1.8rem; line-height: 1; }
+.modul strong { font-size: 1.05rem; }
+.modul span { color: var(--leise); font-size: .9rem; }
+.modul.gross { grid-column: span 2; background: linear-gradient(135deg, #1f4d8f, #182d4a); border-color: var(--blau); }
+@media (max-width: 520px) { .modul.gross { grid-column: span 1; } }
+
+/* Inhalte */
+.liste { padding-left: 1.2em; margin: 6px 0; }
+.liste li { margin: 4px 0; }
+table.tab { width: 100%; border-collapse: collapse; }
+.tab th, .tab td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rand); vertical-align: top; }
+.tab th { color: var(--gelb); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
+.punkt-zahl { font-size: 1.6rem; font-weight: 900; color: var(--gelb); }
+.nono { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); padding: 0; list-style: none; }
+.nono li { background: #3a1f28; border: 1px solid #6b2f3a; border-radius: 12px; padding: 10px 12px; }
+.nono li::before { content: "✋ "; }
+.schritte { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 8px; }
+.schritte li { counter-increment: s; position: relative; padding: 10px 12px 10px 48px; background: var(--nacht2); border-radius: 12px; }
+.schritte li::before { content: counter(s); position: absolute; left: 12px; top: 10px; width: 26px; height: 26px; border-radius: 50%; background: var(--gelb); color: var(--nacht); font-weight: 900; display: grid; place-items: center; font-size: .9rem; }
+.zwei { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.plus li::marker { content: "＋ "; color: var(--gruen); }
+.minus li::marker { content: "－ "; color: var(--rot); }
+
+/* Spielfeld */
+.feld { width: 100%; height: auto; display: block; border-radius: 12px; touch-action: none; }
+.routen-raster { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+.route-karte { background: var(--karte); border: 1px solid var(--rand); border-radius: 14px; padding: 10px; text-align: center; }
+.route-karte h3 { margin: 6px 0 2px; }
+.route-karte p { font-size: .85rem; color: var(--leise); margin: 0; }
+
+/* Playbook */
+.pb-kopf { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+.code { font-family: ui-monospace, Menlo, monospace; font-weight: 900; font-size: 1.3rem; color: var(--gelb); letter-spacing: .04em; background: var(--nacht2); border: 2px dashed var(--gelb); border-radius: 10px; padding: 4px 12px; }
+.tabs { display: flex; gap: 6px; margin: 14px 0; flex-wrap: wrap; }
+.tabs button { padding: 9px 16px; border-radius: 10px; background: var(--nacht2); border: 1px solid var(--rand); font-weight: 800; }
+.tabs button.aktiv { background: var(--blau); border-color: var(--blau); }
+.spielzuege { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.spielzug { background: var(--karte); border: 1px solid var(--rand); border-radius: 16px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.spielzug .kopfzeile { display: flex; align-items: center; gap: 8px; }
+.spielzug .nummer { flex: none; width: 30px; height: 30px; border-radius: 8px; background: var(--gelb); color: var(--nacht); font-weight: 900; display: grid; place-items: center; }
+.spielzug .name { font-weight: 900; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.spielzug .aktionen { display: flex; flex-wrap: wrap; gap: 6px; }
+.spielzug .aktionen button { flex: 1; min-width: 40px; min-height: 38px; border-radius: 9px; background: var(--nacht2); border: 1px solid var(--rand); font-size: .9rem; font-weight: 700; }
+.spielzug .aktionen button.haupt { background: var(--gelb); color: var(--nacht); border-color: var(--gelb); }
+.spielzug.drin { border-color: var(--gruen); }
+.leer-hinweis { text-align: center; padding: 30px 16px; border: 2px dashed var(--rand); border-radius: 16px; color: var(--leise); }
+
+/* Editor */
+.editor { display: grid; grid-template-columns: 1fr 300px; gap: 16px; align-items: start; }
+.werkzeuge { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+.werkzeuge button { min-height: 44px; border-radius: 10px; background: var(--nacht2); border: 1px solid var(--rand); font-weight: 700; font-size: .9rem; padding: 6px; text-align: left; }
+.werkzeuge button.aktiv { background: var(--blau); border-color: var(--blau); }
+.hinweisbox { background: var(--nacht2); border-left: 4px solid var(--gelb); border-radius: 8px; padding: 8px 12px; font-size: .9rem; margin: 10px 0; }
+.legende { display: flex; flex-wrap: wrap; gap: 14px; font-size: .85rem; color: var(--leise); margin-top: 8px; }
+.legende svg { vertical-align: middle; }
+
+/* Overlay */
+.overlay { position: fixed; inset: 0; z-index: 60; background: rgba(5, 12, 22, .92); display: none; align-items: center; justify-content: center; padding: 16px; }
+.overlay.an { display: flex; }
+.overlay .innen { width: min(100%, 960px); max-height: 100%; overflow: auto; }
+.huddle .titelzeile { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.huddle .nummer { font-size: 2.4rem; font-weight: 900; color: var(--gelb); }
+.huddle .name { font-size: clamp(1.4rem, 4vw, 2.4rem); font-weight: 900; flex: 1; }
+.qr { background: #fff; padding: 12px; border-radius: 12px; display: inline-block; }
+.qr svg, .qr img { display: block; width: min(70vw, 300px); height: auto; }
+
+/* Quiz */
+.optionen { display: grid; gap: 10px; margin-top: 12px; }
+.option { text-align: left; padding: 14px 16px; border-radius: 12px; background: var(--nacht2); border: 2px solid var(--rand); font-weight: 700; }
+.option.richtig { border-color: var(--gruen); background: #164a30; }
+.option.falsch { border-color: var(--rot); background: #4a1c1c; }
+.rueckmeldung { margin-top: 12px; padding: 12px 14px; border-radius: 12px; }
+.rueckmeldung.gut { background: #164a30; }
+.rueckmeldung.schlecht { background: #4a1c1c; }
+.balken { height: 8px; background: var(--nacht2); border-radius: 99px; overflow: hidden; margin: 8px 0 14px; }
+.balken i { display: block; height: 100%; background: var(--gelb); }
+
+/* Video */
+.video { aspect-ratio: 16 / 9; background: #000; border-radius: 14px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; position: relative; overflow: hidden; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Glossar */
+.glossar dt { font-weight: 900; color: var(--gelb); margin-top: 10px; }
+.glossar dd { margin: 2px 0 0; color: var(--text); }
+
+#druck { display: none; }
+@media print {
+  body { background: #fff; color: #000; }
+  .kopf, main, .overlay { display: none !important; }
+  #druck { display: block; }
+  #druck .karten { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+  #druck .dk { border: 2px solid #000; border-radius: 4mm; padding: 4mm; break-inside: avoid; }
+  #druck h2 { margin: 0 0 6mm; font-size: 16pt; }
+  #druck .dk h3 { margin: 0 0 2mm; font-size: 13pt; }
+}
+@media (max-width: 820px) {
+  .editor { grid-template-columns: 1fr; }
+  .logo .text { display: none; }
+  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .tabs button { padding: 8px 6px; font-size: .8rem; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <button class="logo" id="logo" aria-label="Zur Startseite">
+      <svg class="flagge" viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="16" rx="14" ry="9" transform="rotate(-35 16 16)" fill="#8a4b22" stroke="#fff" stroke-width="1.5"/><path d="M10 20 L22 12 M13 19 l-1.5-2 M16 17 l-1.5-2 M19 15 l-1.5-2" stroke="#fff" stroke-width="1.5"/></svg>
+      <span class="text titel-schrift">Flag Football</span>
+    </button>
+    <nav class="nav" id="nav"></nav>
+  </div>
+</header>
+<main id="bild"></main>
+<div class="overlay" id="overlay"></div>
+<footer style="text-align:center;padding:0 14px 30px" class="klein leise"><button id="impLink" style="text-decoration:underline">Impressum &amp; Datenschutz</button></footer>
+<div id="druck"></div>
+
+<script>
+'use strict';
+// =====================================================================
+//  Flag Football – Lernseite und digitales Playbook
+//  Inhalte nach: AFVH-Reader „Einführung in das Flagfootball-Spiel“
+//  und „Einfaches Playbook“ (flag-coaching.info).
+//  Playbooks werden nur auf dem Gerät und im Link/QR-Code gespeichert.
+// =====================================================================
+
+const bild = document.getElementById('bild');
+const overlay = document.getElementById('overlay');
+const $ = (s, r = document) => r.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const kopie = (o) => JSON.parse(JSON.stringify(o));
+
+// ---------- Spielfeld-Koordinaten ----------
+// Feld 100 breit × 80 hoch. Angriff spielt nach oben. Line of Scrimmage (LOS) bei y = 52.
+const LOS = 52;
+const ROLLEN = { C: 'Center', QB: 'Quarterback', RB: 'Runningback', WR: 'Receiver', DB: 'Verteidiger*in' };
+
+// Spielzug-Format: s = Spieler*innen [Rolle, x, y, Zone?], w = Wege [Spieler-Index, Art, Punkte, glatt],
+// Art: l = Laufweg ohne Ball, b = Laufweg mit Ball, p = Passweg; m = Marker [h = Ballübergabe | f = Täuschung, x, y]
+const STANDARD = () => ({ s: [['WR', 15, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65], ['RB', 50, 74]], w: [], m: [] });
+
+const BIBLIOTHEK = [
+  // --- aus dem AFVH-Reader ---
+  { id: 'r1', name: 'Lauf rechts', typ: 'lauf', quelle: 'Reader', info: 'Alle Receiver laufen tief und ziehen die Verteidigung mit. Der RB bekommt den Ball per Hand Off und läuft rechts durch die Lücke.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65], ['RB', 50, 74]],
+    w: [[0, 'l', [[15, 56], [15, 14]]], [1, 'l', [[50, 52], [50, 14]]], [2, 'l', [[85, 56], [85, 14]]], [3, 'l', [[50, 65], [63, 70]]],
+      [4, 'l', [[50, 74], [55, 70]], 1], [4, 'b', [[55, 70], [57, 62], [57, 40]], 1]], m: [['h', 55, 69]] },
+  { id: 'r2', name: 'Fake Lauf – Pass', typ: 'trick', quelle: 'Reader', info: 'Der QB täuscht die Übergabe an den RB an und rollt mit dem Ball nach links. Anspielstationen: Curl links, Out vom Center, Corner rechts.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65], ['RB', 50, 74]],
+    w: [[0, 'l', [[15, 56], [15, 18], [18, 16], [19, 24]], 1], [1, 'l', [[50, 52], [50, 36], [22, 36]]], [2, 'l', [[85, 56], [85, 38], [62, 10]]],
+      [3, 'b', [[50, 65], [55, 68], [53, 71], [28, 71]], 1], [4, 'l', [[50, 74], [56, 69], [57, 60], [57, 44]], 1]], m: [['f', 55, 68]] },
+  { id: 'r3', name: 'Fake Reverse – Pass', typ: 'trick', quelle: 'Reader', info: 'Der rechte Receiver läuft hinter dem QB vorbei (angetäuschter Reverse). Danach Pass auf Post, Slant oder Out.',
+    s: [['WR', 15, 56], ['WR', 32, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65]],
+    w: [[0, 'l', [[15, 56], [15, 32], [42, 10]]], [1, 'l', [[32, 56], [68, 14]]], [2, 'l', [[50, 52], [50, 38], [72, 38]]],
+      [3, 'l', [[85, 56], [80, 66], [70, 72], [45, 75]], 1], [4, 'l', [[50, 65], [63, 70]]]], m: [['f', 62, 70]] },
+  { id: 'r4', name: 'Fake Lauf – Reverse', typ: 'trick', quelle: 'Reader', info: 'Der RB täuscht einen Lauf an. Den Ball bekommt aber der rechte Wing per Hand Off – er läuft auf die andere Seite.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['RB', 85, 56], ['QB', 50, 65], ['RB', 50, 74]],
+    w: [[0, 'l', [[15, 56], [15, 14]]], [1, 'l', [[50, 52], [50, 14]]], [2, 'l', [[85, 56], [80, 66], [64, 70]], 1], [2, 'b', [[64, 70], [45, 74], [28, 66], [22, 44]], 1],
+      [3, 'l', [[50, 65], [63, 70]]], [4, 'l', [[50, 74], [56, 69], [57, 60], [57, 44]], 1]], m: [['f', 55, 68], ['h', 64, 70]] },
+  { id: 'r5', name: 'Pass – All Curl', typ: 'pass', quelle: 'Reader', info: 'Alle laufen nach vorne und drehen sich zum QB um (Curl). Sicherer, kurzer Pass.',
+    s: [['WR', 15, 56], ['WR', 32, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65]],
+    w: [[0, 'l', [[15, 56], [15, 22], [18, 19], [19, 27]], 1], [1, 'l', [[32, 56], [32, 22], [35, 19], [36, 27]], 1], [2, 'l', [[50, 52], [50, 22], [53, 19], [54, 27]], 1], [3, 'l', [[85, 56], [85, 22], [82, 19], [81, 27]], 1]], m: [] },
+  { id: 'r6', name: 'Pass – All Curl & Fly', typ: 'pass', quelle: 'Reader', info: 'Alle täuschen einen Curl an und starten dann tief durch (Fly). Gut gegen eine Verteidigung, die auf Curls wartet.',
+    s: [['WR', 15, 56], ['WR', 32, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65]],
+    w: [[0, 'l', [[15, 56], [15, 34], [19, 40], [19, 8]]], [1, 'l', [[32, 56], [32, 34], [36, 40], [36, 8]]], [2, 'l', [[50, 52], [50, 34], [54, 40], [54, 8]]], [3, 'l', [[85, 56], [85, 34], [81, 40], [81, 8]]]], m: [] },
+  { id: 'r7', name: 'Pass – Curl, Corner, Fly, In', typ: 'pass', quelle: 'Reader', info: 'Vier verschiedene Routen auf mehreren Höhen – die Verteidigung kann nicht alles decken.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 68, 56], ['WR', 85, 56], ['QB', 50, 65]],
+    w: [[0, 'l', [[15, 56], [15, 20], [18, 17], [19, 25]], 1], [1, 'l', [[50, 52], [50, 36], [25, 12]]], [2, 'l', [[68, 56], [68, 10]]], [3, 'l', [[85, 56], [85, 38], [56, 38]]]], m: [] },
+  { id: 'r8', name: 'Pass – Post, Slant, Corner, Hitch', typ: 'pass', quelle: 'Reader', info: 'Post und Corner kreuzen sich in der Tiefe, der Slant geht schnell nach innen, der Hitch ist der kurze Notfall-Pass.',
+    s: [['WR', 15, 56], ['WR', 32, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65]],
+    w: [[0, 'l', [[15, 56], [15, 32], [45, 8]]], [1, 'l', [[32, 56], [70, 18]]], [2, 'l', [[50, 52], [50, 30], [20, 8]]], [3, 'l', [[85, 56], [85, 46], [82, 49]]]], m: [] },
+  { id: 'r9', name: 'Motion Pass – Post, Out, Up & Fly, Slant', typ: 'pass', quelle: 'Reader', info: 'Ein Receiver wechselt vor dem Snap hinter dem QB die Seite (Motion) und startet dann diagonal und tief.',
+    s: [['WR', 15, 56], ['WR', 32, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 65]],
+    w: [[0, 'l', [[15, 56], [15, 36], [44, 16]]], [1, 'l', [[32, 58], [42, 68], [58, 68], [68, 58], [82, 40], [82, 10]], 1], [2, 'l', [[50, 52], [50, 38], [72, 38]]], [3, 'l', [[85, 56], [55, 34]]]], m: [] },
+  // --- aus „Einfaches Playbook“ (flag-coaching.info) ---
+  { id: 'e1', name: 'Fly, Out, In + RB links', typ: 'pass', quelle: 'Einfaches Playbook', info: 'Links tief (Fly), der Center läuft ein Out nach rechts, rechts ein In. Der RB läuft als kurze Anspielstation nach links.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 85, 56], ['RB', 38, 68], ['QB', 50, 68]],
+    w: [[0, 'l', [[15, 56], [15, 14]]], [1, 'l', [[50, 52], [50, 36], [78, 36]]], [2, 'l', [[85, 56], [85, 30], [60, 30]]], [3, 'l', [[38, 68], [26, 67], [20, 60]], 1]], m: [] },
+  { id: 'e2', name: 'Post, Out, Fly + RB rechts', typ: 'pass', quelle: 'Einfaches Playbook', info: 'Spiegelbild zum ersten Pass: Der RB steht rechts vom QB und läuft eine kurze Route nach rechts.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 44, 68], ['RB', 58, 68]],
+    w: [[0, 'l', [[15, 56], [15, 44], [32, 24]]], [1, 'l', [[50, 52], [50, 36], [72, 36]]], [2, 'l', [[85, 56], [85, 14]]], [4, 'l', [[58, 68], [72, 67], [78, 60]], 1]], m: [] },
+  { id: 'e3', name: 'Sweep links', typ: 'lauf', quelle: 'Einfaches Playbook', info: 'Die Receiver ziehen ihre Verteidiger*innen nach rechts weg. Der RB bekommt den Ball und läuft außen links herum.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 66], ['RB', 60, 63]],
+    w: [[0, 'l', [[15, 56], [15, 36], [40, 36]]], [1, 'l', [[50, 52], [50, 36], [70, 36]]], [2, 'l', [[85, 56], [70, 42]]], [4, 'l', [[60, 63], [58, 70]], 1], [4, 'b', [[58, 70], [40, 72], [26, 68], [18, 58]], 1]], m: [['h', 57, 70]] },
+  { id: 'e4', name: 'Lauf diagonal links', typ: 'lauf', quelle: 'Einfaches Playbook', info: 'Hand Off neben dem QB, dann läuft der RB schräg nach vorne links in den Raum, den die Receiver frei gemacht haben.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 68], ['RB', 62, 68]],
+    w: [[0, 'l', [[15, 56], [36, 32]]], [1, 'l', [[50, 52], [50, 36], [70, 36]]], [2, 'l', [[85, 56], [85, 30], [55, 30]]], [4, 'l', [[62, 68], [56, 63]]], [4, 'b', [[56, 63], [40, 46]]]], m: [['h', 56, 63]] },
+  { id: 'e5', name: 'Zwillinge links', typ: 'pass', quelle: 'Einfaches Playbook', info: 'Zwei Receiver stehen links eng nebeneinander und laufen auseinander (In und Out). Rechts Fly, Center Out.',
+    s: [['WR', 14, 56], ['WR', 25, 56], ['C', 50, 56], ['WR', 85, 56], ['QB', 50, 68]],
+    w: [[0, 'l', [[14, 56], [14, 40], [36, 40]]], [1, 'l', [[25, 56], [25, 44], [6, 44]]], [2, 'l', [[50, 52], [50, 40], [68, 40]]], [3, 'l', [[85, 56], [85, 14]]]], m: [] },
+  { id: 'e6', name: 'Zwillinge rechts', typ: 'pass', quelle: 'Einfaches Playbook', info: 'Spiegelbild: Zwillinge rechts (Out und Slant), links Fly, der Center läuft ein Out nach links.',
+    s: [['WR', 15, 56], ['C', 50, 56], ['WR', 74, 56], ['WR', 85, 56], ['QB', 50, 68]],
+    w: [[0, 'l', [[15, 56], [15, 14]]], [1, 'l', [[50, 52], [50, 40], [30, 40]]], [2, 'l', [[74, 56], [74, 44], [94, 44]]], [3, 'l', [[85, 56], [62, 42]]]], m: [] },
+];
+const bibliothek = (id) => BIBLIOTHEK.find(b => b.id === id);
+
+// Passrouten (ein Receiver links vom QB)
+const ROUTEN = [
+  { name: 'Fly (Streak)', p: [[25, 60], [25, 10]], text: 'Gerade und schnell nach vorne in die Tiefe.' },
+  { name: 'Out', p: [[25, 60], [25, 32], [6, 32]], text: 'Nach vorne, dann scharf nach außen zur Seitenlinie.' },
+  { name: 'In', p: [[25, 60], [25, 32], [55, 32]], text: 'Nach vorne, dann scharf nach innen zum QB hin.' },
+  { name: 'Corner', p: [[25, 60], [25, 36], [8, 14]], text: 'Nach vorne, dann schräg in die äußere Ecke.' },
+  { name: 'Post', p: [[25, 60], [25, 36], [48, 12]], text: 'Nach vorne, dann schräg zur Mitte in die Tiefe.' },
+  { name: 'Curl', p: [[25, 60], [25, 26], [29, 22], [31, 30]], g: 1, text: 'Nach vorne, umdrehen und zum QB zurückkommen.' },
+  { name: 'Slant', p: [[25, 60], [55, 40]], text: 'Sofort schräg nach innen – schneller, kurzer Pass.' },
+  { name: 'Hitch', p: [[25, 60], [25, 50], [28, 53]], text: 'Ein paar Schritte vor, kurz umdrehen – der Notfall-Pass.' },
+];
+
+// ---------- Kurven ----------
+function glaetten(punkte) {
+  if (punkte.length < 3) return punkte.map(p => [...p]);
+  const out = [];
+  for (let i = 0; i < punkte.length - 1; i++) {
+    const p0 = punkte[i - 1] || punkte[i], p1 = punkte[i], p2 = punkte[i + 1], p3 = punkte[i + 2] || p2;
+    for (let k = 0; k < 10; k++) {
+      const t = k / 10, t2 = t * t, t3 = t2 * t;
+      out.push([0, 1].map(j => 0.5 * ((2 * p1[j]) + (-p0[j] + p2[j]) * t + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * t2 + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * t3)));
+    }
+  }
+  out.push([...punkte[punkte.length - 1]]);
+  return out;
+}
+const wegPunkte = (w) => (w[3] ? glaetten(w[2]) : w[2]);
+const r1 = (n) => Math.round(n * 10) / 10;
+
+// ---------- Spielfeld zeichnen ----------
+let svgNr = 0;
+function feld(spiel, opt = {}) {
+  const id = 'f' + (++svgNr);
+  let s = `<defs>
+    <marker id="${id}a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#fff"/></marker>
+    <marker id="${id}b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#ffd23f"/></marker>
+    <pattern id="${id}r" width="20" height="80" patternUnits="userSpaceOnUse"><rect width="10" height="80" fill="#2f8f4e"/><rect x="10" width="10" height="80" fill="#2a8547"/></pattern></defs>
+    <rect width="100" height="80" fill="url(#${id}r)"/>
+    <rect x="0" y="0" width="100" height="5" fill="#ffffff22"/>
+    <text x="50" y="3.7" text-anchor="middle" font-size="3" font-weight="900" fill="#ffffffaa" letter-spacing=".8">ENDZONE</text>`;
+  [15, 25, 35].forEach(y => { s += `<line x1="0" y1="${y}" x2="100" y2="${y}" stroke="#ffffff40" stroke-width=".35"/>`; });
+  s += `<line x1="0" y1="${LOS}" x2="100" y2="${LOS}" stroke="#ffffffcc" stroke-width=".5" stroke-dasharray="2 1.5"/>`;
+  if (!opt.klein) s += `<text x="1.5" y="${LOS - 1.2}" font-size="2.4" fill="#ffffffcc" font-weight="700">Line of Scrimmage</text>`;
+  // Zonen der Verteidigung
+  spiel.s.forEach((sp) => { if (sp[0] === 'DB' && sp[3]) s += `<ellipse cx="${sp[1]}" cy="${sp[2]}" rx="14" ry="9" fill="#ef4b4b22" stroke="#ef4b4b99" stroke-width=".5"/>`; });
+  // Wege
+  spiel.w.forEach((w, i) => {
+    const pts = wegPunkte(w).map(p => p.join(',')).join(' ');
+    const art = w[1];
+    const stil = art === 'l' ? `stroke="#fff" stroke-width=".8" marker-end="url(#${id}a)"`
+      : art === 'b' ? `stroke="#ffd23f" stroke-width=".9" stroke-dasharray="3 1.2 .6 1.2" marker-end="url(#${id}b)"`
+      : `stroke="#fff" stroke-width=".55" stroke-dasharray=".8 1" marker-end="url(#${id}a)"`;
+    s += `<polyline class="weg" data-w="${i}" points="${pts}" fill="none" stroke-linejoin="round" stroke-linecap="round" ${stil}/>`;
+  });
+  // Marker Ballübergabe / Täuschung
+  (spiel.m || []).forEach((m, i) => {
+    const [t, x, y] = m;
+    const strich = (dx) => `<line x1="${x - 1.6 + dx}" y1="${y - 1.6 - dx}" x2="${x + 1.6 + dx}" y2="${y + 1.6 - dx}" stroke="#ffd23f" stroke-width=".7"/>`;
+    s += `<g class="marker" data-m="${i}">${t === 'h' ? strich(-0.6) + strich(0.6) : strich(0)}<circle cx="${x}" cy="${y}" r="3" fill="transparent"/></g>`;
+  });
+  // Ball am Center
+  const c = spiel.s.find(sp => sp[0] === 'C');
+  if (c && !opt.ohneBall) s += `<ellipse class="ball-start" cx="${c[1]}" cy="${c[2] - 4.6}" rx="1.6" ry="1" fill="#8a4b22" stroke="#fff" stroke-width=".25"/>`;
+  // Spieler*innen
+  spiel.s.forEach((sp, i) => { s += spielerSvg(sp, i); });
+  if (opt.ball) s += `<ellipse class="anim-ball" cx="-10" cy="-10" rx="1.6" ry="1" fill="#8a4b22" stroke="#fff" stroke-width=".3"/>`;
+  return `<svg class="feld" id="${id}" viewBox="0 0 100 80" role="img" aria-label="${esc(opt.label || 'Spielzug')}">${s}</svg>`;
+}
+function spielerSvg(sp, i) {
+  const [r, x, y] = sp;
+  const lab = r === 'WR' ? 'R' : r;
+  if (r === 'C') return `<g class="sp" data-s="${i}" transform="translate(${x} ${y})"><rect x="-3.4" y="-3.4" width="6.8" height="6.8" rx=".8" fill="#fff" stroke="#0d1b2e" stroke-width=".5"/><text y="1.3" text-anchor="middle" font-size="3.6" font-weight="900" fill="#0d1b2e">C</text></g>`;
+  if (r === 'DB') return `<g class="sp" data-s="${i}" transform="translate(${x} ${y})"><path d="M-4,-3 L4,-3 L0,4 Z" fill="#ef4b4b" stroke="#fff" stroke-width=".4"/><text y="-.2" text-anchor="middle" font-size="2.4" font-weight="900" fill="#fff">DB</text></g>`;
+  const fill = r === 'QB' ? '#ffd23f' : r === 'RB' ? '#9ec5ff' : '#fff';
+  return `<g class="sp" data-s="${i}" transform="translate(${x} ${y})"><circle r="3.6" fill="${fill}" stroke="#0d1b2e" stroke-width=".5"/><text y="1.2" text-anchor="middle" font-size="${lab.length > 1 ? 2.7 : 3.4}" font-weight="900" fill="#0d1b2e">${lab}</text></g>`;
+}
+const LEGENDE = `<div class="legende">
+  <span><svg width="34" height="10"><line x1="2" y1="5" x2="30" y2="5" stroke="#fff" stroke-width="2"/></svg> Laufweg</span>
+  <span><svg width="34" height="10"><line x1="2" y1="5" x2="30" y2="5" stroke="#ffd23f" stroke-width="2" stroke-dasharray="7 3 1.5 3"/></svg> Laufweg mit Ball</span>
+  <span><svg width="34" height="10"><line x1="2" y1="5" x2="30" y2="5" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 2.5"/></svg> Pass</span>
+  <span><svg width="18" height="14"><path d="M4 12 L10 2 M8 12 L14 2" stroke="#ffd23f" stroke-width="2"/></svg> Ballübergabe</span>
+  <span><svg width="14" height="14"><path d="M4 12 L10 2" stroke="#ffd23f" stroke-width="2"/></svg> Täuschung</span>
+</div>`;
+
+// ---------- Animation ----------
+function laenge(pts) { let l = 0; for (let i = 1; i < pts.length; i++) l += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return l; }
+function punktBei(pts, d) {
+  for (let i = 1; i < pts.length; i++) {
+    const seg = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+    if (d <= seg) { const t = seg ? d / seg : 0; return [pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * t, pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * t]; }
+    d -= seg;
+  }
+  return pts[pts.length - 1];
+}
+const laeufe = new WeakMap();
+function animieren(svg, spiel) {
+  if (!svg) return;
+  if (laeufe.get(svg)) cancelAnimationFrame(laeufe.get(svg));
+  const TEMPO = 18, START = 0.5;               // Feldeinheiten pro Sekunde, Snap-Zeit
+  const qbI = spiel.s.findIndex(sp => sp[0] === 'QB'), cI = spiel.s.findIndex(sp => sp[0] === 'C');
+  const pfade = spiel.s.map((sp, i) => {
+    const teile = spiel.w.filter(w => w[0] === i && w[1] !== 'p');
+    let pts = [[sp[1], sp[2]]], ballAb = null;
+    for (const w of teile) {
+      const p = wegPunkte(w);
+      if (w[1] === 'b' && ballAb === null) ballAb = laenge(pts);
+      pts = pts.concat(p);
+    }
+    return { pts, len: laenge(pts), ballAb };
+  });
+  const pass = spiel.w.find(w => w[1] === 'p');
+  const ballLaeufer = pfade.findIndex(p => p.ballAb !== null);
+  let ball = svg.querySelector('.anim-ball');
+  if (!ball) { svg.insertAdjacentHTML('beforeend', '<ellipse class="anim-ball" rx="1.6" ry="1" fill="#8a4b22" stroke="#fff" stroke-width=".3"/>'); ball = svg.querySelector('.anim-ball'); }
+  const start = svg.querySelector('.ball-start'); if (start) start.style.display = 'none';
+  const gruppen = [...svg.querySelectorAll('.sp')];
+  const dauer = Math.max(...pfade.map(p => START + p.len / TEMPO), pass ? 3.2 : 2) + 0.6;
+  const t0 = performance.now();
+  const qbPos = (t) => { const p = pfade[qbI]; return p ? punktBei(p.pts, Math.max(0, t - START) * TEMPO) : [50, 65]; };
+  const schritt = (jetzt) => {
+    const t = (jetzt - t0) / 1000;
+    gruppen.forEach((g) => {
+      const i = +g.dataset.s, p = pfade[i];
+      const pos = punktBei(p.pts, Math.max(0, t - START) * TEMPO);
+      g.setAttribute('transform', `translate(${r1(pos[0])} ${r1(pos[1])})`);
+    });
+    // Ball: Snap vom Center zum QB, dann Pass oder mit dem Ballträger
+    let bp;
+    const cPos = cI >= 0 ? [spiel.s[cI][1], spiel.s[cI][2] - 4.6] : [50, LOS];
+    if (t < START) { const q = qbPos(0); const k = t / START; bp = [cPos[0] + (q[0] - cPos[0]) * k, cPos[1] + (q[1] - cPos[1]) * k]; }
+    else if (pass && t >= 1.6) {
+      const k = Math.min(1, (t - 1.6) / 0.7), von = qbPos(1.6), nach = pass[2][pass[2].length - 1];
+      bp = [von[0] + (nach[0] - von[0]) * k, von[1] + (nach[1] - von[1]) * k - Math.sin(k * Math.PI) * 4];
+    } else if (!pass && ballLaeufer >= 0) {
+      const p = pfade[ballLaeufer], d = Math.max(0, t - START) * TEMPO;
+      bp = d >= p.ballAb ? punktBei(p.pts, d) : qbPos(t);
+    } else bp = qbPos(t);
+    ball.setAttribute('cx', r1(bp[0])); ball.setAttribute('cy', r1(bp[1]));
+    if (t < dauer) laeufe.set(svg, requestAnimationFrame(schritt));
+    else { gruppen.forEach((g) => { const sp = spiel.s[+g.dataset.s]; g.setAttribute('transform', `translate(${sp[1]} ${sp[2]})`); }); ball.setAttribute('cx', -10); if (start) start.style.display = ''; }
+  };
+  laeufe.set(svg, requestAnimationFrame(schritt));
+}
+
+// ---------- Speicher & Team-Code ----------
+const SPEICHER = 'flag-playbook-v1';
+let D = { aktiv: null, playbooks: {}, quiz: 0 };
+try { Object.assign(D, JSON.parse(localStorage.getItem(SPEICHER)) || {}); } catch { /* ohne Speicher */ }
+function sichern() { try { localStorage.setItem(SPEICHER, JSON.stringify(D)); } catch { /* privates Fenster */ } }
+const ADJ = ['BLITZ', 'TURBO', 'SILBER', 'NEON', 'STURM', 'GOLD', 'ROT', 'WILD', 'KOBALT', 'FLINK', 'LASER', 'NORD', 'SONNEN', 'NACHT', 'EIS'];
+const TIER = ['FALKE', 'LUCHS', 'HAI', 'ADLER', 'PANTHER', 'WOLF', 'KOBRA', 'BISON', 'FUCHS', 'ORCA', 'RABE', 'GEPARD', 'PUMA', 'DRACHE', 'BULLE'];
+function neuerCode() {
+  let c;
+  do { c = `${ADJ[Math.floor(Math.random() * ADJ.length)]}-${TIER[Math.floor(Math.random() * TIER.length)]}-${10 + Math.floor(Math.random() * 90)}`; } while (D.playbooks[c]);
+  return c;
+}
+function aktuellesPB() {
+  if (!D.aktiv || !D.playbooks[D.aktiv]) {
+    const code = neuerCode();
+    D.playbooks[code] = { code, team: '', spiele: [], geaendert: Date.now() };
+    D.aktiv = code;
+    sichern();
+  }
+  return D.playbooks[D.aktiv];
+}
+// Spielzug im Playbook: { l: Bibliotheks-ID } oder { d: eigene Spieldaten }, dazu t = eigener Name
+function spielDaten(e) { return e.d ? e.d : bibliothek(e.l); }
+function spielName(e) { return e.t || (e.d ? e.d.name : bibliothek(e.l)?.name) || 'Spielzug'; }
+function spielTyp(e) { return e.d ? (e.d.typ || 'eigen') : bibliothek(e.l)?.typ; }
+
+// Playbook als kompakter Link (komprimiert, Base64url)
+const b64 = (bytes) => btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const unb64 = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0));
+async function packen(pb) {
+  const daten = JSON.stringify({ c: pb.code, n: pb.team, s: pb.spiele.map(e => e.d ? { t: e.t, d: { name: e.d.name, typ: e.d.typ, s: e.d.s, w: e.d.w, m: e.d.m, info: e.d.info } } : { t: e.t, l: e.l }) });
+  const roh = new TextEncoder().encode(daten);
+  if ('CompressionStream' in window) {
+    try {
+      const st = new Blob([roh]).stream().pipeThrough(new CompressionStream('deflate-raw'));
+      return 'z' + b64(new Uint8Array(await new Response(st).arrayBuffer()));
+    } catch { /* ohne Kompression */ }
+  }
+  return 'j' + b64(roh);
+}
+async function entpacken(s) {
+  const bytes = unb64(s.slice(1));
+  let text;
+  if (s[0] === 'z') text = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text();
+  else text = new TextDecoder().decode(bytes);
+  const o = JSON.parse(text);
+  return { code: o.c, team: o.n || '', spiele: (o.s || []).filter(e => e.l ? bibliothek(e.l) : e.d).map(e => ({ ...e })), geaendert: Date.now() };
+}
+async function linkErzeugen(pb) { return `${location.origin}${location.pathname}#pb=${await packen(pb)}`; }
+
+// ---------- Navigation ----------
+const SEITEN = [
+  ['start', 'Start'], ['basics', 'Basics'], ['regeln', 'Regeln'], ['technik', 'Technik'], ['routen', 'Passrouten'],
+  ['defense', 'Defense'], ['spielformen', 'Spielformen'], ['videos', 'Videos'], ['playbook', 'Playbook'], ['quiz', 'Quiz'], ['glossar', 'Begriffe'],
+];
+let seite = 'start';
+function zeige(s, opt) {
+  seite = s;
+  $('#nav').innerHTML = SEITEN.map(([id, t]) => `<button data-s="${id}" class="${id === s ? 'aktiv' : ''}">${t}</button>`).join('');
+  $('#nav').querySelectorAll('button').forEach(b => b.onclick = () => zeige(b.dataset.s));
+  $('#nav .aktiv')?.scrollIntoView({ inline: 'center', block: 'nearest' });
+  window.scrollTo(0, 0);
+  SEITEN_FN[s](opt);
+}
+$('#logo').onclick = () => zeige('start');
+$('#impLink').onclick = () => zeige('impressum');
+
+// ---------- Seiten ----------
+const SEITEN_FN = {
+  start() {
+    bild.innerHTML = `
+      <section class="held">
+        <p class="titel-schrift gelb klein" style="color:var(--gelb)">Sportkurs · Jahrgang 12</p>
+        <h1 class="titel-schrift">Flag Football<br><span style="color:var(--gelb)">ohne Kontakt.</span><br>Mit Taktik.</h1>
+        <p>5 gegen 5, Flaggen statt Tackling. Hier findest du alles, was du für den Kurs brauchst – und baust mit deinem Team euer eigenes digitales Playbook.</p>
+        <div class="reihe"><button class="knopf" data-z="playbook">🏈 Zum Playbook</button><button class="knopf zweit" data-z="basics">Basics lernen</button></div>
+        ${HELD_SVG}
+      </section>
+      <div class="module">
+        ${[['basics', '🏟️', 'Basics', 'Spielidee, Feld, Positionen, Ablauf eines Spielzugs'],
+           ['regeln', '🚩', 'Regeln & Fair Play', 'Punkte, No-Nos und warum es ohne Kontakt geht'],
+           ['technik', '🙌', 'Technik', 'Flagge ziehen, Fangen, Werfen'],
+           ['routen', '↗️', 'Passrouten', '8 Routen – animiert'],
+           ['defense', '🛡️', 'Defense', 'Personen- oder Zonendeckung?'],
+           ['spielformen', '🔁', 'Spielformen', 'Vom Parteiball zum Flag Football'],
+           ['videos', '▶️', 'Videos', 'Technik und Regeln in Bewegung'],
+           ['quiz', '❓', 'Quiz', 'Teste dein Wissen'],
+           ['glossar', '📖', 'Begriffe', 'Von Blitz bis Shotgun']]
+          .map(([z, i, t, s]) => `<button class="modul" data-z="${z}"><span class="nr">${i}</span><strong>${t}</strong><span>${s}</span></button>`).join('')}
+        <button class="modul gross" data-z="playbook"><span class="nr">📋</span><strong>Euer Playbook</strong><span>Spielzüge auswählen, umbenennen, selbst zeichnen, animieren – gespeichert über euren Team-Code, ganz ohne Anmeldung.</span></button>
+      </div>`;
+    bild.querySelectorAll('[data-z]').forEach(b => b.onclick = () => zeige(b.dataset.z));
+  },
+
+  basics() {
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Basics</h1>
+      <div class="zwei">
+        <div class="karte"><h2>Die Spielidee</h2>
+          <p>Flag Football ist die <b>kontaktlose Variante</b> des American Football: Zwei Teams mit je <b>5 Spieler*innen</b> versuchen, den Ball in die gegnerische <b>Endzone</b> zu bringen – durch Laufen oder einen Pass nach vorne. Statt jemanden zu Boden zu bringen, ziehst du der ballführenden Person eine <b>Flagge vom Gürtel</b>. Dann ist der Spielzug vorbei.</p>
+          <p>Flag Football verbindet vier Spielideen: <b>Mannschaftsspiel</b>, <b>Ballspiel</b>, <b>Fangspiel</b> und <b>Endzonenspiel</b>.</p></div>
+        <div class="karte"><h2>So läuft ein Spielzug</h2>
+          <ol class="schritte">
+            <li><b>Huddle:</b> Das Team bespricht den Spielzug (max. ca. 30 Sekunden). Der QB zeigt die Karte aus dem Playbook.</li>
+            <li><b>Aufstellung</b> an der <b>Line of Scrimmage</b> – der gedachten Linie, an der der Ball liegt.</li>
+            <li><b>Count „SET – GO“:</b> Auf das Kommando des QB startet der Spielzug.</li>
+            <li><b>Shotgun (Snap):</b> Der Center wirft den Ball durch die Beine nach hinten zum QB.</li>
+            <li><b>Pass, Lauf oder Täuschung</b> – bis die Flagge gezogen wird, der Ball auf den Boden fällt oder ein Touchdown gelingt.</li>
+          </ol></div>
+      </div>
+      <div class="karte"><h2>Positionen</h2>
+        <div class="zwei">
+          <div><h3 style="color:var(--gelb)">Offense (Angriff)</h3>
+            <ul class="liste"><li><b>Center (C):</b> startet den Spielzug mit der Shotgun und läuft danach selbst eine Route.</li>
+            <li><b>Quarterback (QB):</b> Spielmacher*in – wirft den Pass oder übergibt den Ball (Hand Off).</li>
+            <li><b>Runningback (RB):</b> steht hinter dem QB und läuft mit dem Ball.</li>
+            <li><b>Receiver (R / WR):</b> laufen Passrouten und fangen den Ball.</li></ul></div>
+          <div><h3 style="color:var(--rot)">Defense (Verteidigung)</h3>
+            <ul class="liste"><li><b>Defense Backs (DB):</b> decken Receiver oder Zonen und ziehen Flaggen.</li>
+            <li><b>Safety:</b> die letzte Person der Verteidigung – lässt niemanden hinter sich.</li>
+            <li><b>Blitz:</b> Eine Person darf aus mindestens 7 m Abstand zur Line of Scrimmage auf den QB zulaufen – aber erst nach dem Count.</li></ul></div>
+        </div>
+        <div style="max-width:560px;margin:10px auto 0">${feld({ ...STANDARD(), s: [...STANDARD().s, ['DB', 15, 40], ['DB', 50, 38], ['DB', 85, 40], ['DB', 32, 26], ['DB', 66, 26]] }, { label: 'Grundaufstellung' })}</div>
+      </div>
+      <div class="karte"><h2>Raumgewinn & Downs</h2>
+        <p>Die Offense hat <b>4 Versuche (Downs)</b>, um den Ball über die <b>Mittellinie</b> zu bringen. Schafft sie das, gibt es ein <b>First Down</b> – also wieder 4 Versuche bis in die Endzone. Fällt ein Pass auf den Boden, ist der Versuch vorbei (kein Fumble-Sichern). Der kurze, sichere Pass bringt oft mehr als der riskante lange.</p>
+      </div>`;
+  },
+
+  regeln() {
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Regeln & Fair Play</h1>
+      <div class="karte"><h2>Wie gibt es Punkte?</h2>
+        <table class="tab"><tr><th>Aktion</th><th>Punkte</th><th>Wann?</th></tr>
+          <tr><td><b>Touchdown</b></td><td class="punkt-zahl">6</td><td>Der Ball wird in die gegnerische Endzone getragen oder dort gefangen.</td></tr>
+          <tr><td><b>Point after Touchdown</b><br><span class="leise klein">von der 10-m-Linie</span></td><td class="punkt-zahl">2</td><td>Extraversuch nach dem Touchdown – durch Lauf oder Pass.</td></tr>
+          <tr><td><b>Point after Touchdown</b><br><span class="leise klein">von der 5-m-Linie</span></td><td class="punkt-zahl">1</td><td>Extraversuch von näher dran – nur mit einem Pass.</td></tr>
+          <tr><td><b>Safety</b></td><td class="punkt-zahl">2</td><td>Für die Defense: Der ballführenden Person wird in der eigenen Endzone die Flagge gezogen – oder ihr fällt dort der Ball herunter.</td></tr>
+          <tr><td><b>Interception-Touchdown</b></td><td class="punkt-zahl">6</td><td>Die Defense fängt einen Pass ab und trägt ihn in die gegnerische Endzone.</td></tr>
+        </table></div>
+      <div class="karte"><h2>Die No-Nos</h2>
+        <p class="leise">Flag Football ist sicher, weil diese Dinge tabu sind:</p>
+        <ul class="nono">${['Die eigene Flagge schützen oder festhalten', 'Springen – außer nach dem Ball', 'In jemanden hineinlaufen', 'Die ballführende Person zu Boden bringen', 'Blocken mit Körperkontakt', 'Festhalten oder Bein stellen', 'Von hinten angreifen', 'Dem QB den Ball beim Wurf aus der Hand schlagen', 'Beschimpfen, verspotten, ausgrenzen', 'Jemanden nicht mitspielen lassen'].map(t => `<li>${t}</li>`).join('')}</ul></div>
+      <div class="karte"><h2>Regeln entstehen im Spiel</h2>
+        <p>Im Unterricht gilt: <b>„So wenig Regeln wie möglich, so viele wie nötig.“</b> Wenn etwas im Spiel nicht funktioniert, besprecht ihr es gemeinsam und passt die Regel an – z. B. Spielfeldgröße, Anzahl der Downs oder ob Blitze erlaubt sind.</p></div>`;
+  },
+
+  technik() {
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Technik</h1>
+      <div class="karte"><h2>🚩 Flagge ziehen</h2>
+        <div class="zwei"><ol class="schritte">
+          <li>Nicht überreagieren – zwing die ballführende Person zu einer Reaktion.</li>
+          <li>Sicherer Stand: Füße schulterbreit, Knie leicht gebeugt, auf den Fußballen.</li>
+          <li>Augen auf die Flagge (von der Seite) oder den Bauchnabel (von vorne) – Kopf oben.</li>
+          <li>Arme vor dem Körper, die Augen führen die Hände zur Flagge.</li>
+          <li>Locker bleiben, Balance halten.</li>
+          <li>Nach dem Ziehen stehen bleiben und die Flagge hochhalten – dann zurückgeben. Fair geht vor!</li>
+        </ol>
+        <div><h3>Übungen</h3><ul class="liste">
+          <li><b>Jailbreak:</b> Alle versuchen, an einer fangenden Person vorbei über die Mittellinie zu kommen. Wer die Flagge verliert, fängt mit. Jede*r läuft in einem eigenen Korridor (3–5 m).</li>
+          <li><b>Shotgun Drill:</b> Eine verteidigende Person steht zwischen zwei Hütchen (3 m) und zieht so viele Flaggen wie möglich (Slide & Pull).</li>
+          <li><b>Endzonen-Lauf:</b> 1 gegen 1 in einer Box (ca. 8 × 6 m).</li>
+          <li><b>Go for Touchdown:</b> Durch mehrere Zonen mit je einer verteidigenden Person in die Endzone laufen.</li></ul></div></div></div>
+      <div class="zwei">
+        <div class="karte"><h2>🙌 Fangen</h2>
+          <ul class="liste"><li><b>Bälle ab Brusthöhe:</b> Daumen und Zeigefinger beider Hände bilden eine Raute, die anderen Finger einen Korb – wie beim Pritschen.</li>
+          <li><b>Bälle unter Brusthöhe:</b> Die kleinen Finger bilden eine Schale.</li>
+          <li><b>Den Ball „in die Hände schauen“:</b> Augen bis zum sicheren Fang am Ball lassen, z. B. auf die Spitze oder Naht.</li>
+          <li>Hände weich und locker, Ball sofort sichern.</li></ul></div>
+        <div class="karte"><h2>🏈 Werfen</h2>
+          <ol class="schritte"><li><b>Rotation:</b> Ball im Unterarmwurf über die Fingerspitzen abrollen lassen – er dreht sich um die Längsachse.</li>
+          <li><b>Handgelenk:</b> Ball über dem Kopf, Ellbogen gestützt – mit dem Handgelenk abklappen („Cobra“ wie beim Korbwurf).</li>
+          <li><b>Ganzer Wurf:</b> Griff in der Mitte (Finger auf der Naht), Ausholen, Hüfte vor, Schulter folgt, Arm schlagartig strecken. Die Ballspitze zeigt in Wurfrichtung.</li></ol>
+          <p class="klein leise">Griff: Bei der „1 & 4“-Technik liegt der Ringfinger auf der ersten und der kleine Finger auf der vierten Lasche der Naht.</p></div>
+      </div>
+      <div class="karte"><h2>🔄 Angriffs-Abläufe</h2>
+        <div class="raster">
+          <div><h3>Shotgun</h3><p class="klein">Der Center wirft den Ball auf „SET – GO“ durch die gegrätschten Beine zum QB (ca. 1 m dahinter). Ziel: Oberkörper des QB.</p></div>
+          <div><h3>Hand Off</h3><p class="klein">Der QB legt den Ball dem RB in die „Tasche“ (Pocket) aus beiden Unterarmen. Den Ball danach auf der Seite weg von der Verteidigung tragen.</p></div>
+          <div><h3>Fake</h3><p class="klein">Der QB täuscht die Übergabe an, zieht den Ball zurück, verdeckt ihn mit der Hüfte – und wirft dann zu einem Receiver.</p></div>
+        </div></div>`;
+  },
+
+  routen() {
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Passrouten</h1>
+      <p class="leise">Tippe auf eine Route, um sie ablaufen zu lassen. Die Routen gibt es auch gespiegelt – je nachdem, auf welcher Seite der Receiver steht.</p>
+      <div class="routen-raster">${ROUTEN.map((r, i) => {
+        const spiel = { s: [['WR', r.p[0][0], r.p[0][1]], ['QB', 60, 66]], w: [[0, 'l', r.p, r.g]], m: [] };
+        return `<button class="route-karte" data-r="${i}">${feld(spiel, { klein: 1, ohneBall: 1, label: r.name })}<h3>${r.name}</h3><p>${r.text}</p></button>`;
+      }).join('')}</div>
+      <div class="karte" style="margin-top:16px"><h2>Training: Routen-Stationen</h2>
+        <p>Teilt euch in vier Kleingruppen. Jede Gruppe bekommt eine Routenkarte. Eine Person ist QB, gibt „SET – GO“ und wirft, sobald Blickkontakt da ist. Nach einigen Durchgängen wechselt die Station. Die Stationen so nebeneinander aufbauen, dass sich keine Wege kreuzen.</p></div>`;
+    bild.querySelectorAll('[data-r]').forEach(b => {
+      const r = ROUTEN[+b.dataset.r];
+      const spiel = { s: [['WR', r.p[0][0], r.p[0][1]], ['QB', 60, 66]], w: [[0, 'l', r.p, r.g], [1, 'p', [[60, 66], r.p[r.p.length - 1]]]], m: [] };
+      b.onclick = () => { const svg = b.querySelector('svg'); spielerReset(svg); animieren(svg, spiel); };
+    });
+  },
+
+  defense() {
+    const grund = [['WR', 15, 56], ['C', 50, 56], ['WR', 68, 56], ['WR', 85, 56], ['QB', 50, 65]];
+    const mann = { s: [...grund, ['DB', 15, 46], ['DB', 50, 44], ['DB', 68, 46], ['DB', 85, 46], ['DB', 50, 18]], w: [], m: [] };
+    const zone = { s: [...grund, ['DB', 18, 38, 1], ['DB', 50, 38, 1], ['DB', 82, 38, 1], ['DB', 32, 18, 1], ['DB', 68, 18, 1]], w: [], m: [] };
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Defense</h1>
+      <p class="leise">Es gibt zwei Grundarten, die eigene Endzone zu verteidigen.</p>
+      <div class="zwei">
+        <div class="karte"><h2>Personendeckung <span class="leise klein">(Man Coverage)</span></h2>
+          ${feld(mann, { label: 'Personendeckung' })}
+          <p style="margin-top:10px">Jede*r verteidigt eine bestimmte Person und folgt ihr überallhin. Eine freie Person bleibt als Safety hinten – oder blitzt auf den QB.</p>
+          <ul class="liste plus"><li>Leicht zu verstehen und schnell eingeführt.</li><li>Durch die Überzahl ist ein Blitz möglich.</li></ul>
+          <ul class="liste minus"><li>Sehr laufintensiv – schwächere Spieler*innen werden schnell überfordert.</li><li>Man sieht nur die eigene Person, nicht das ganze Spiel.</li></ul></div>
+        <div class="karte"><h2>Zonendeckung <span class="leise klein">(Zone Coverage)</span></h2>
+          ${feld(zone, { label: 'Zonendeckung 3–2' })}
+          <p style="margin-top:10px">Jede*r verteidigt einen Bereich des Feldes. Laufen zwei Receiver in deine Zone („Zone fluten“), lies den QB: Er kann den Ball nur zu einer Person werfen.</p>
+          <ul class="liste plus"><li>Alle können gut mitverteidigen, Schwächen Einzelner fallen weniger ins Gewicht.</li><li>Ballorientiert – näher an der Idee von Flag Football.</li></ul>
+          <ul class="liste minus"><li>Anfangs schwerer vorzustellen.</li><li>Lücken entstehen, wenn jemand die eigene Zone verlässt.</li></ul></div>
+      </div>
+      <div class="hinweisbox">Im <b>Playbook-Editor</b> kannst du Verteidiger*innen auf das Feld stellen und Zonen einzeichnen – und deinen Spielzug gegen eure Verteidigung testen.</div>`;
+  },
+
+  spielformen() {
+    const reihe = [
+      ['Parteiball', 'Ball in den eigenen Reihen halten. Wer den Ball hat, darf nicht laufen. Kein Körperkontakt. Ball am Boden = Ballwechsel.', 'Complete/Incomplete Pass, Interception, Personendeckung'],
+      ['Parteiball mit Joker', 'Jeder zweite Pass muss zum Joker, der mit dem Ball laufen darf. Joker oft wechseln.', 'Alle einbinden'],
+      ['Basket-Football', 'Punkte durch Treffer am Basketballbrett (1), Ring (2), Quadrat (3), Korb (5). Erst nach der Mittellinie werfen.', 'Kurzpassspiel, Spielrichtung'],
+      ['Ultimate Football', 'Touchdown, wenn der Ball in der Endzone gefangen wird. In alle Richtungen passen.', 'Endzone, Touchdown'],
+      ['Forward-Ultimate', 'Nur noch Pässe nach vorne. Ball am Boden: Neustart an der eigenen Grundlinie.', 'Raumgewinn, Line of Scrimmage, Zonendeckung'],
+      ['Quarterback-Ball', 'Start auf „SET – GO“. Wer fängt, wird QB. 2–4 Versuche pro QB. Der QB darf nicht laufen.', 'Count, Downs, Spielzüge, Safety'],
+      ['Quarterback-Flag-Football', 'Mit Flaggengürteln: Der Spielzug endet, wenn die Flagge gezogen wird. Blitz aus 7 m erlaubt.', 'Flagge ziehen, Laufen mit Ball, Interception Return'],
+      ['Jägerball', '„Jäger*innen“ ziehen Flaggen, wer den Ball hat, ist sicher.', 'Flagge ziehen, Spielen unter Druck'],
+    ];
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Spielformen</h1>
+      <p class="leise">„Spielen kann man nur durch Spielen lernen.“ Diese Spielreihe führt Schritt für Schritt zum Zielspiel – jede Stufe bringt ein neues Element dazu.</p>
+      <ol class="schritte">${reihe.map(([n, t, neu]) => `<li><b>${n}</b><br>${t}<br><span class="leise klein">Neu: ${neu}</span></li>`).join('')}</ol>
+      <div class="karte" style="margin-top:16px"><h3>🏁 Ziel: Flag Football 5 gegen 5</h3><p class="klein">Mit Huddle, Playbook-Karten, Shotgun, Downs und Flaggen.</p></div>`;
+  },
+
+  videos() {
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Videos</h1>
+      <p class="leise">Videos werden erst geladen, wenn du auf „Video laden“ tippst. Dabei werden Daten an YouTube übertragen.</p>
+      <div class="raster">${VIDEOS.map((v, i) => `
+        <div class="karte"><h3>${esc(v.titel)}</h3>
+          <div class="video" id="video${i}">${v.id
+            ? `<div><p class="klein">Beim Laden wird eine Verbindung zu YouTube hergestellt.</p><button class="knopf" data-v="${i}">▶ Video laden</button></div>`
+            : `<div><p class="klein leise">Hier ist noch kein Video eingetragen.</p><a class="knopf zweit klein" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.suche)}" target="_blank" rel="noopener">Auf YouTube suchen</a></div>`}
+          </div>
+          <p class="klein leise" style="margin-top:8px">${esc(v.text)}</p></div>`).join('')}</div>`;
+    bild.querySelectorAll('[data-v]').forEach(b => b.onclick = () => {
+      const v = VIDEOS[+b.dataset.v];
+      $('#video' + b.dataset.v).innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}?rel=0" title="${esc(v.titel)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    });
+  },
+
+  impressum() {
+    bild.innerHTML = `<div class="karte"><h1 class="titel-schrift">Impressum</h1>
+      <p>Angaben gemäß § 5 DDG:<br>Daniel Dirks<br>Ahornweg 70<br>51469 Bergisch Gladbach</p>
+      <p class="klein leise">Lernangebot für den Sportunterricht. Inhalte nach dem Reader „Einführung in das Flagfootball-Spiel“ (AFVH) und dem „Einfachen Playbook“ von flag-coaching.info (© Chris Kämpfe), für diese Seite nachgezeichnet.</p></div>
+      <div class="karte"><h2>Datenschutz</h2>
+      <p>Diese Seite braucht keine Anmeldung und setzt keine Cookies. Eure Playbooks und Quiz-Ergebnisse werden nur im Speicher eures eigenen Browsers (localStorage) abgelegt und nicht an einen Server übertragen. Ein geteilter Link oder QR-Code enthält das Playbook selbst. Gebt dort keine echten Namen ein.</p>
+      <p>Die Seite wird über GitHub Pages (GitHub Inc.) bereitgestellt. Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie die IP-Adresse. Für den QR-Code wird eine Programmbibliothek von cdnjs (Cloudflare) geladen.</p>
+      <p>YouTube-Videos werden erst geladen, wenn du auf „Video laden“ tippst. Dann werden Daten an YouTube (Google) übertragen. Genutzt wird der erweiterte Datenschutzmodus (youtube-nocookie.com).</p>
+      <p>Verantwortlich: Daniel Dirks, Anschrift siehe oben.</p></div>`;
+  },
+  playbook: playbookSeite,
+  quiz: quizSeite,
+
+  glossar() {
+    bild.innerHTML = `
+      <h1 class="titel-schrift">Begriffe</h1>
+      <input id="suche" placeholder="Begriff suchen …" aria-label="Begriff suchen" style="width:100%;max-width:420px;margin-bottom:10px">
+      <dl class="glossar" id="glossar"></dl>`;
+    const zeichne = (f) => {
+      $('#glossar').innerHTML = BEGRIFFE.filter(([b, e]) => (b + e).toLowerCase().includes(f.toLowerCase()))
+        .map(([b, e]) => `<dt>${b}</dt><dd>${e}</dd>`).join('') || '<p class="leise">Nichts gefunden.</p>';
+    };
+    $('#suche').oninput = (e) => zeichne(e.target.value);
+    zeichne('');
+  },
+};
+function spielerReset(svg) { if (svg && laeufe.get(svg)) cancelAnimationFrame(laeufe.get(svg)); }
+
+// Videos: Hier YouTube-IDs eintragen (der Teil nach „watch?v=“ in der Adresse)
+const VIDEOS = [
+  { titel: 'Flag Football erklärt', id: 'nGkVis2yqWw', text: 'Infovideo: Was ist Flag Football und wie funktioniert das Spiel?' },
+  { titel: 'Beispiel: echtes Spiel', id: 'XtWKps4yV64', text: 'Highlights USA gegen Spanien (IFAF-Flag-Football-WM). Achte auf Aufstellung, Snap, Routen und das Flagge-Ziehen.' },
+  { titel: 'Flagge ziehen – Technik', id: '', suche: 'NFL Flag flag pulling technique', text: 'Wie stehe ich, wohin schaue ich, wie greife ich die Flagge?' },
+  { titel: 'Regeln einfach erklärt', id: '', suche: 'Flag Football Regeln einfach erklärt', text: 'Die wichtigsten Regeln von Flag Football im Überblick.' },
+  { titel: 'Passrouten', id: '', suche: 'flag football passing routes explained', text: 'Out, In, Slant, Post & Co. in Bewegung.' },
+  { titel: 'Football werfen', id: '', suche: 'how to throw a football spiral beginners', text: 'Griff und Wurfbewegung für eine saubere Spirale.' },
+];
+
+const BEGRIFFE = [
+  ['Blitz', 'Eine Person der Defense läuft direkt nach dem Count auf den QB zu. Sie muss vorher mindestens 7 m hinter der Line of Scrimmage stehen.'],
+  ['Center (C)', 'Startet jeden Spielzug, indem er/sie den Ball durch die Beine zum QB wirft (Shotgun).'],
+  ['Completion / Complete Pass', 'Ein gefangener Pass.'],
+  ['Count', 'Das Startkommando des QB: „SET – GO“.'],
+  ['Defense', 'Das verteidigende Team.'],
+  ['Down', 'Ein Versuch. Die Offense hat 4 Downs, um über die Mittellinie zu kommen, dann gibt es ein First Down.'],
+  ['Endzone', 'Der Bereich hinter der Grundlinie, in dem Touchdowns erzielt werden.'],
+  ['Fake', 'Eine Täuschung, z. B. eine angetäuschte Ballübergabe.'],
+  ['Fumble', 'Der Ball fällt auf den Boden. Im Flag Football ist der Spielzug dann sofort vorbei.'],
+  ['Hand Off', 'Ballübergabe von Hand zu Hand, meist vom QB zum RB.'],
+  ['Huddle', 'Kurze Besprechung des Teams vor einem Spielzug.'],
+  ['Incomplete Pass', 'Ein Pass, der nicht gefangen wird.'],
+  ['Interception', 'Die Defense fängt einen Pass ab – der Ballbesitz wechselt.'],
+  ['Line of Scrimmage (LOS)', 'Gedachte Linie quer über das Feld, an der der Ball vor dem Spielzug liegt.'],
+  ['Motion', 'Ein Receiver wechselt vor dem Snap seine Position.'],
+  ['Offense', 'Das angreifende Team.'],
+  ['Play', 'Ein Spielzug.'],
+  ['Pocket', 'Die „Tasche“ aus beiden Unterarmen, in die der RB beim Hand Off den Ball bekommt.'],
+  ['Quarterback (QB)', 'Spielmacher*in der Offense: wirft oder übergibt den Ball.'],
+  ['Receiver (R / WR)', 'Läuft Passrouten und fängt den Ball.'],
+  ['Runningback (RB)', 'Läuft mit dem Ball, steht hinter dem QB.'],
+  ['Safety', '1) Letzte Person der Defense. 2) 2 Punkte für die Defense, wenn der Angriff in der eigenen Endzone gestoppt wird.'],
+  ['Shotgun', 'Der Wurf des Balls vom Center durch die Beine zum QB.'],
+  ['Touchdown', 'Der Ball wird in die gegnerische Endzone getragen oder dort gefangen – 6 Punkte.'],
+  ...ROUTEN.map(r => [r.name, 'Passroute: ' + r.text]),
+];
+
+const HELD_SVG = `<svg class="deko" viewBox="0 0 200 160" aria-hidden="true">
+  <g transform="translate(110 40) rotate(-25)"><ellipse rx="42" ry="25" fill="#8a4b22" stroke="#fff" stroke-width="3"/><path d="M-18,0 H18 M-12,-5 v10 M-4,-5 v10 M4,-5 v10 M12,-5 v10" stroke="#fff" stroke-width="3"/><path d="M-34,-10 q-6 10 0 20 M34,-10 q6 10 0 20" stroke="#fff" stroke-width="3" fill="none"/></g>
+  <g transform="translate(40 110)"><rect x="-18" y="-6" width="36" height="8" rx="3" fill="#13213a"/><path d="M-14,2 q-6 20 2 34 l10-2 q-4-14 0-30 Z" fill="#ffd23f"/><path d="M10,2 q8 18 2 36 l-10-2 q5-16 -2-32 Z" fill="#ef4b4b"/></g>
+</svg>`;
+
+// ---------- Playbook ----------
+let pbTab = 'mein';
+function playbookSeite(opt) {
+  const pb = aktuellesPB();
+  if (opt && opt.tab) pbTab = opt.tab;
+  bild.innerHTML = `
+    <div class="pb-kopf">
+      <div><h1 class="titel-schrift" style="margin-bottom:4px">Euer Playbook</h1>
+        <div class="reihe"><span class="leise klein">Team-Code:</span><span class="code" id="teamCode">${esc(pb.code)}</span>
+          <input id="teamName" value="${esc(pb.team)}" placeholder="Teamname (kein Klarname)" maxlength="30" aria-label="Teamname" style="max-width:240px"></div></div>
+      <div class="reihe">
+        <button class="knopf" id="teilen">🔗 Link & QR</button>
+        <button class="knopf zweit" id="huddle">📣 Huddle</button>
+        <button class="knopf zweit" id="drucken">🖨️ Karten</button>
+        <button class="knopf zweit" id="verwalten">⚙️</button>
+      </div>
+    </div>
+    <div class="tabs">
+      <button data-t="mein" class="${pbTab === 'mein' ? 'aktiv' : ''}">📋 Unser Playbook (${pb.spiele.length})</button>
+      <button data-t="bib" class="${pbTab === 'bib' ? 'aktiv' : ''}">📚 Spielzug-Bibliothek</button>
+      <button data-t="neu" class="${pbTab === 'neu' ? 'aktiv' : ''}">✏️ Neuen Spielzug zeichnen</button>
+    </div>
+    <div id="pbInhalt"></div>`;
+  $('#teamName').onchange = (e) => { pb.team = e.target.value.trim().slice(0, 30); pb.geaendert = Date.now(); sichern(); };
+  bild.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { pbTab = b.dataset.t; playbookSeite(); });
+  $('#teilen').onclick = teilenDialog;
+  $('#huddle').onclick = () => huddle(0);
+  $('#drucken').onclick = drucken;
+  $('#verwalten').onclick = verwaltenDialog;
+  const inhalt = $('#pbInhalt');
+  if (pbTab === 'bib') bibliothekZeigen(inhalt, pb);
+  else if (pbTab === 'neu') editor(inhalt, null);
+  else meinPlaybook(inhalt, pb);
+}
+
+function karteHtml(e, i, aktionen, drin) {
+  const d = spielDaten(e);
+  const typ = spielTyp(e);
+  const typName = { pass: 'Pass', lauf: 'Lauf', trick: 'Trick', eigen: 'Eigener', defense: 'Defense' }[typ] || typ;
+  return `<div class="spielzug ${drin ? 'drin' : ''}" data-i="${i}">
+    <div class="kopfzeile">${aktionen !== 'bib' ? `<span class="nummer">${i + 1}</span>` : ''}<span class="name" title="${esc(spielName(e))}">${esc(spielName(e))}</span><span class="chip ${typ}">${typName}</span></div>
+    ${feld(d, { klein: 1, label: spielName(e) })}
+    ${d.info ? `<p class="klein leise" style="margin:0">${esc(d.info)}</p>` : ''}
+    <div class="aktionen">${aktionen === 'bib'
+      ? `<button data-a="play" aria-label="Abspielen">▶</button><button data-a="add" class="haupt">${drin ? '✓ Drin – nochmal' : '+ Ins Playbook'}</button>`
+      : `<button data-a="play" aria-label="Abspielen">▶</button><button data-a="name" aria-label="Umbenennen">✏️ Name</button><button data-a="edit" aria-label="Bearbeiten">🖊 Wege</button><button data-a="hoch" aria-label="Nach vorne">▲</button><button data-a="runter" aria-label="Nach hinten">▼</button><button data-a="weg" aria-label="Entfernen">🗑</button>`}</div>
+  </div>`;
+}
+
+function meinPlaybook(el, pb) {
+  if (!pb.spiele.length) {
+    el.innerHTML = `<div class="leer-hinweis"><p><b>Euer Playbook ist noch leer.</b></p><p>Sucht euch in der Bibliothek passende Spielzüge aus oder zeichnet eigene.</p>
+      <div class="reihe" style="justify-content:center"><button class="knopf" id="zurBib">📚 Zur Bibliothek</button><button class="knopf zweit" id="zumEditor">✏️ Selbst zeichnen</button></div></div>`;
+    $('#zurBib').onclick = () => { pbTab = 'bib'; playbookSeite(); };
+    $('#zumEditor').onclick = () => { pbTab = 'neu'; playbookSeite(); };
+    return;
+  }
+  el.innerHTML = `${LEGENDE}<div class="spielzuege" style="margin-top:12px">${pb.spiele.map((e, i) => karteHtml(e, i, 'mein')).join('')}</div>`;
+  el.querySelectorAll('.spielzug').forEach(k => {
+    const i = +k.dataset.i, e = pb.spiele[i];
+    k.querySelectorAll('[data-a]').forEach(b => b.onclick = () => {
+      const a = b.dataset.a;
+      if (a === 'play') return animieren(k.querySelector('svg'), spielDaten(e));
+      if (a === 'name') {
+        const neu = prompt('Neuer Name für den Spielzug:', spielName(e));
+        if (neu && neu.trim()) e.t = neu.trim().slice(0, 40);
+      }
+      if (a === 'edit') return editor($('#pbInhalt'), i);
+      if (a === 'hoch' && i > 0) [pb.spiele[i - 1], pb.spiele[i]] = [pb.spiele[i], pb.spiele[i - 1]];
+      if (a === 'runter' && i < pb.spiele.length - 1) [pb.spiele[i + 1], pb.spiele[i]] = [pb.spiele[i], pb.spiele[i + 1]];
+      if (a === 'weg' && confirm(`„${spielName(e)}“ aus dem Playbook entfernen?`)) pb.spiele.splice(i, 1);
+      pb.geaendert = Date.now(); sichern(); playbookSeite();
+    });
+  });
+}
+
+function bibliothekZeigen(el, pb) {
+  let filter = 'alle';
+  const zeichnen = () => {
+    const liste = BIBLIOTHEK.filter(b => filter === 'alle' || b.typ === filter);
+    el.innerHTML = `
+      <div class="reihe" style="margin-bottom:10px">${[['alle', 'Alle'], ['pass', 'Pass'], ['lauf', 'Lauf'], ['trick', 'Trick']].map(([f, t]) => `<button class="knopf klein ${f === filter ? '' : 'zweit'}" data-f="${f}">${t}</button>`).join('')}</div>
+      ${LEGENDE}
+      <div class="spielzuege" style="margin-top:12px">${liste.map(b => karteHtml({ l: b.id }, BIBLIOTHEK.indexOf(b), 'bib', pb.spiele.some(e => e.l === b.id))).join('')}</div>
+      <p class="klein leise" style="margin-top:14px">Quellen: AFVH-Reader „Einführung in das Flagfootball-Spiel“ (Spielzüge r1–r9) und „Einfaches Playbook“, flag-coaching.info (6 Spielzüge), für diese Seite nachgezeichnet.</p>`;
+    el.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { filter = b.dataset.f; zeichnen(); });
+    el.querySelectorAll('.spielzug').forEach(k => {
+      const b = BIBLIOTHEK[+k.dataset.i];
+      k.querySelector('[data-a="play"]').onclick = () => animieren(k.querySelector('svg'), b);
+      k.querySelector('[data-a="add"]').onclick = (ev) => {
+        pb.spiele.push({ l: b.id }); pb.geaendert = Date.now(); sichern();
+        ev.target.textContent = '✓ Hinzugefügt'; k.classList.add('drin');
+        document.querySelector('[data-t="mein"]').textContent = `📋 Unser Playbook (${pb.spiele.length})`;
+      };
+    });
+  };
+  zeichnen();
+}
+
+// ---------- Editor ----------
+function editor(el, index) {
+  const pb = aktuellesPB();
+  const e = index !== null ? pb.spiele[index] : null;
+  const basis = e ? spielDaten(e) : STANDARD();
+  let spiel = kopie({ s: basis.s, w: basis.w, m: basis.m || [] });
+  let name = e ? spielName(e) : '';
+  let typ = e ? (spielTyp(e) === 'eigen' ? 'pass' : spielTyp(e)) : 'pass';
+  let notiz = e ? (basis.info || '') : '';
+  let werkzeug = 'lauf', rolle = 'WR';
+  const verlauf = [];
+  const merken = () => { verlauf.push(JSON.stringify(spiel)); if (verlauf.length > 40) verlauf.shift(); };
+  const WERKZEUGE = [
+    ['bewegen', '✋ Verschieben'], ['lauf', '➡️ Laufweg'], ['ball', '🏈 Lauf mit Ball'], ['pass', '🎯 Pass'],
+    ['h', '‖ Ballübergabe'], ['f', '| Täuschung'], ['spieler', '➕ Person setzen'], ['zone', '⭕ Zone an/aus'], ['loeschen', '🗑 Löschen'],
+  ];
+  const TIPPS = {
+    bewegen: 'Ziehe eine Person an eine neue Stelle. Ihre Wege wandern mit.',
+    lauf: 'Lege den Finger auf eine Person und zeichne ihren Laufweg.',
+    ball: 'Zeichne den Laufweg mit Ball – z. B. für den RB nach der Übergabe.',
+    pass: 'Zeichne vom QB aus, wohin der Ball geworfen wird.',
+    h: 'Tippe an die Stelle der Ballübergabe (Hand Off).',
+    f: 'Tippe an die Stelle der angetäuschten Übergabe.',
+    spieler: 'Wähle die Rolle und tippe aufs Feld. DB = Verteidiger*in.',
+    zone: 'Tippe auf eine verteidigende Person (DB), um ihre Zone ein- oder auszublenden.',
+    loeschen: 'Tippe auf eine Person, einen Weg oder eine Markierung, um sie zu löschen.',
+  };
+  el.innerHTML = `
+    <div class="editor">
+      <div><div id="feldBox"></div>${LEGENDE}</div>
+      <div class="karte" style="margin:0">
+        <label class="klein leise" for="spName">Name des Spielzugs</label>
+        <input id="spName" value="${esc(name)}" placeholder="z. B. Blitz-Falke" maxlength="40" style="width:100%;margin-bottom:8px">
+        <label class="klein leise" for="spTyp">Art</label>
+        <select id="spTyp" style="width:100%;margin-bottom:10px">${[['pass', 'Pass'], ['lauf', 'Lauf'], ['trick', 'Trick'], ['defense', 'Defense']].map(([v, t]) => `<option value="${v}" ${v === typ ? 'selected' : ''}>${t}</option>`).join('')}</select>
+        <div class="werkzeuge" id="werkzeuge">${WERKZEUGE.map(([w, t]) => `<button data-w="${w}">${t}</button>`).join('')}</div>
+        <div id="rollenWahl" class="reihe" style="margin-top:8px"></div>
+        <div class="hinweisbox" id="tipp"></div>
+        <div class="reihe">
+          <button class="knopf zweit klein" id="rueck">↶ Rückgängig</button>
+          <button class="knopf zweit klein" id="leeren">Wege leeren</button>
+          <button class="knopf zweit klein" id="abspielen">▶ Abspielen</button>
+        </div>
+        <label class="klein leise" for="spNotiz" style="display:block;margin-top:10px">Notiz fürs Team</label>
+        <textarea id="spNotiz" rows="2" maxlength="160" style="width:100%">${esc(notiz)}</textarea>
+        <div class="reihe" style="margin-top:12px">
+          <button class="knopf" id="speichern">💾 ${e ? 'Speichern' : 'Ins Playbook'}</button>
+          <button class="knopf zweit" id="abbrechen">Abbrechen</button>
+        </div>
+        ${e && e.l ? '<p class="klein leise" style="margin-top:8px">Ihr bearbeitet einen Spielzug aus der Bibliothek – im Playbook wird daraus eure eigene Version.</p>' : ''}
+      </div>
+    </div>`;
+
+  const box = $('#feldBox');
+  let svg;
+  const zeichnen = () => { box.innerHTML = feld(spiel, { label: 'Editor' }); svg = box.querySelector('svg'); verbinden(); };
+  const werkzeugeZeichnen = () => {
+    el.querySelectorAll('[data-w]').forEach(b => b.classList.toggle('aktiv', b.dataset.w === werkzeug));
+    $('#tipp').textContent = TIPPS[werkzeug];
+    $('#rollenWahl').innerHTML = werkzeug === 'spieler' ? Object.keys(ROLLEN).map(r => `<button class="knopf klein ${r === rolle ? '' : 'zweit'}" data-r="${r}">${r === 'WR' ? 'R' : r}</button>`).join('') : '';
+    el.querySelectorAll('[data-r]').forEach(b => b.onclick = () => { rolle = b.dataset.r; werkzeugeZeichnen(); });
+  };
+  el.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { werkzeug = b.dataset.w; werkzeugeZeichnen(); });
+
+  const svgPunkt = (ev) => { const p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY; const q = p.matrixTransform(svg.getScreenCTM().inverse()); return [Math.max(0, Math.min(100, q.x)), Math.max(0, Math.min(80, q.y))]; };
+  const naechste = (p, nur) => {
+    let best = -1, bd = 7;
+    spiel.s.forEach((sp, i) => { if (nur && sp[0] !== nur) return; const d = Math.hypot(sp[1] - p[0], sp[2] - p[1]); if (d < bd) { bd = d; best = i; } });
+    return best;
+  };
+  const wegEnde = (i) => { const eig = spiel.w.filter(w => w[0] === i && w[1] !== 'p'); if (!eig.length) return [spiel.s[i][1], spiel.s[i][2]]; const l = eig[eig.length - 1][2]; return l[l.length - 1]; };
+  // Ramer-Douglas-Peucker: gezeichnete Linie vereinfachen
+  function vereinfachen(pts, eps = 1.4) {
+    if (pts.length < 3) return pts;
+    const [a, b] = [pts[0], pts[pts.length - 1]];
+    let maxD = 0, idx = 0;
+    for (let i = 1; i < pts.length - 1; i++) {
+      const d = Math.abs((b[1] - a[1]) * pts[i][0] - (b[0] - a[0]) * pts[i][1] + b[0] * a[1] - b[1] * a[0]) / (Math.hypot(b[0] - a[0], b[1] - a[1]) || 1);
+      if (d > maxD) { maxD = d; idx = i; }
+    }
+    if (maxD > eps) return vereinfachen(pts.slice(0, idx + 1), eps).slice(0, -1).concat(vereinfachen(pts.slice(idx), eps));
+    return [a, b];
+  }
+  const abstandZuWeg = (p, w) => {
+    const pts = wegPunkte(w); let m = 99;
+    for (let i = 1; i < pts.length; i++) {
+      const [x1, y1] = pts[i - 1], [x2, y2] = pts[i], dx = x2 - x1, dy = y2 - y1;
+      const t = Math.max(0, Math.min(1, ((p[0] - x1) * dx + (p[1] - y1) * dy) / (dx * dx + dy * dy || 1)));
+      m = Math.min(m, Math.hypot(p[0] - (x1 + t * dx), p[1] - (y1 + t * dy)));
+    }
+    return m;
+  };
+
+  function verbinden() {
+    let zug = null;
+    svg.onpointerdown = (ev) => {
+      ev.preventDefault();
+      const p = svgPunkt(ev);
+      if (werkzeug === 'bewegen') {
+        const i = naechste(p);
+        if (i >= 0) { merken(); zug = { art: 'bewegen', i, letzter: p }; svg.setPointerCapture(ev.pointerId); }
+        return;
+      }
+      if (werkzeug === 'lauf' || werkzeug === 'ball' || werkzeug === 'pass') {
+        const i = werkzeug === 'pass' ? naechste(p, 'QB') : naechste(p);
+        if (i < 0) { $('#tipp').textContent = werkzeug === 'pass' ? 'Starte den Pass direkt beim QB.' : 'Starte direkt bei einer Person.'; return; }
+        const start = werkzeug === 'pass' ? [spiel.s[i][1], spiel.s[i][2]] : wegEnde(i);
+        zug = { art: 'zeichnen', i, pts: [start] };
+        svg.insertAdjacentHTML('beforeend', `<polyline id="live" fill="none" stroke="${werkzeug === 'ball' ? '#ffd23f' : '#fff'}" stroke-width=".8" stroke-dasharray="${werkzeug === 'lauf' ? '' : '1.5 1'}"/>`);
+        svg.setPointerCapture(ev.pointerId);
+        return;
+      }
+      if (werkzeug === 'h' || werkzeug === 'f') { merken(); spiel.m.push([werkzeug, r1(p[0]), r1(p[1])]); zeichnen(); return; }
+      if (werkzeug === 'spieler') { merken(); spiel.s.push([rolle, Math.round(p[0]), Math.round(p[1])]); zeichnen(); return; }
+      if (werkzeug === 'zone') { const i = naechste(p, 'DB'); if (i >= 0) { merken(); spiel.s[i][3] = spiel.s[i][3] ? 0 : 1; zeichnen(); } return; }
+      if (werkzeug === 'loeschen') {
+        const mi = (spiel.m || []).findIndex(m => Math.hypot(m[1] - p[0], m[2] - p[1]) < 3.5);
+        if (mi >= 0) { merken(); spiel.m.splice(mi, 1); return zeichnen(); }
+        const i = naechste(p);
+        if (i >= 0) {
+          merken();
+          spiel.s.splice(i, 1);
+          spiel.w = spiel.w.filter(w => w[0] !== i).map(w => [w[0] > i ? w[0] - 1 : w[0], ...w.slice(1)]);
+          return zeichnen();
+        }
+        let wi = -1, bd = 3;
+        spiel.w.forEach((w, k) => { const d = abstandZuWeg(p, w); if (d < bd) { bd = d; wi = k; } });
+        if (wi >= 0) { merken(); spiel.w.splice(wi, 1); zeichnen(); }
+      }
+    };
+    svg.onpointermove = (ev) => {
+      if (!zug) return;
+      const p = svgPunkt(ev);
+      if (zug.art === 'bewegen') {
+        const dx = p[0] - zug.letzter[0], dy = p[1] - zug.letzter[1];
+        zug.letzter = p;
+        const sp = spiel.s[zug.i];
+        sp[1] = r1(sp[1] + dx); sp[2] = r1(sp[2] + dy);
+        spiel.w.forEach(w => { if (w[0] === zug.i && w[1] !== 'p') w[2] = w[2].map(([x, y]) => [r1(x + dx), r1(y + dy)]); });
+        svg.querySelector(`.sp[data-s="${zug.i}"]`).setAttribute('transform', `translate(${sp[1]} ${sp[2]})`);
+        return;
+      }
+      const l = zug.pts[zug.pts.length - 1];
+      if (Math.hypot(p[0] - l[0], p[1] - l[1]) > 1.2) { zug.pts.push(p); $('#live').setAttribute('points', zug.pts.map(q => q.join(',')).join(' ')); }
+    };
+    svg.onpointerup = () => {
+      if (!zug) return;
+      if (zug.art === 'zeichnen' && zug.pts.length > 1) {
+        merken();
+        const art = werkzeug === 'lauf' ? 'l' : werkzeug === 'ball' ? 'b' : 'p';
+        let pts = vereinfachen(zug.pts).map(([x, y]) => [Math.round(x), Math.round(y)]);
+        if (art === 'p') pts = [pts[0], pts[pts.length - 1]];
+        if (laenge(pts) > 2) spiel.w.push([zug.i, art, pts, art === 'p' || pts.length < 3 ? 0 : 1]);
+      }
+      if (zug.art === 'bewegen') spiel.s[zug.i] = spiel.s[zug.i].map((v, k) => (k === 1 || k === 2) ? Math.round(v) : v);
+      zug = null;
+      zeichnen();
+    };
+    svg.onpointercancel = () => { zug = null; zeichnen(); };
+  }
+
+  $('#rueck').onclick = () => { if (verlauf.length) { spiel = JSON.parse(verlauf.pop()); zeichnen(); } };
+  $('#leeren').onclick = () => { merken(); spiel.w = []; spiel.m = []; zeichnen(); };
+  $('#abspielen').onclick = () => animieren(svg, spiel);
+  $('#abbrechen').onclick = () => { pbTab = 'mein'; playbookSeite(); };
+  $('#speichern').onclick = () => {
+    const n = $('#spName').value.trim().slice(0, 40) || `Spielzug ${pb.spiele.length + 1}`;
+    const daten = { name: n, typ: $('#spTyp').value, s: spiel.s, w: spiel.w, m: spiel.m, info: $('#spNotiz').value.trim().slice(0, 160) };
+    if (e) { pb.spiele[index] = { t: n, d: daten }; } else pb.spiele.push({ t: n, d: daten });
+    pb.geaendert = Date.now(); sichern();
+    pbTab = 'mein'; playbookSeite();
+  };
+  zeichnen();
+  werkzeugeZeichnen();
+}
+
+// ---------- Teilen, QR, Verwalten ----------
+async function teilenDialog() {
+  const pb = aktuellesPB();
+  const link = await linkErzeugen(pb);
+  let qrHtml = '<p class="klein leise">QR-Code konnte nicht erstellt werden (offline?). Nutzt den Link.</p>';
+  if (window.qrcode) {
+    try { const q = qrcode(0, 'L'); q.addData(link); q.make(); qrHtml = `<div class="qr">${q.createSvgTag({ cellSize: 4, margin: 2, scalable: true })}</div>`; }
+    catch { qrHtml = '<p class="klein leise">Das Playbook ist zu groß für einen QR-Code – nutzt den Link oder die Datei.</p>'; }
+  }
+  overlay.innerHTML = `<div class="innen karte" style="text-align:center">
+    <h2>Playbook mitnehmen</h2>
+    <p>Team-Code <span class="code">${esc(pb.code)}</span>${pb.team ? ` · ${esc(pb.team)}` : ''}</p>
+    <p class="klein leise">Der Link enthält euer komplettes Playbook. Scannt den QR-Code mit einem anderen Handy, oder speichert den Link (z. B. als Lesezeichen oder Notiz). Es wird nichts auf einem Server gespeichert.</p>
+    ${qrHtml}
+    <div class="reihe" style="justify-content:center;margin-top:14px">
+      <button class="knopf" id="kopieren">📋 Link kopieren</button>
+      ${navigator.share ? '<button class="knopf zweit" id="share">📤 Teilen</button>' : ''}
+      <button class="knopf zweit" id="datei">💾 Als Datei</button>
+      <button class="knopf zweit" id="zu">Schließen</button>
+    </div>
+    <p class="klein leise" id="kopiert" style="margin-top:8px"></p></div>`;
+  overlay.className = 'overlay an';
+  $('#zu').onclick = () => { overlay.className = 'overlay'; };
+  $('#kopieren').onclick = async () => { try { await navigator.clipboard.writeText(link); $('#kopiert').textContent = '✓ Link kopiert'; } catch { prompt('Link kopieren:', link); } };
+  if (navigator.share) $('#share').onclick = () => navigator.share({ title: `Flag-Playbook ${pb.code}`, url: link }).catch(() => {});
+  $('#datei').onclick = async () => {
+    const blob = new Blob([JSON.stringify({ format: 'flag-playbook', code: await packen(pb) })], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `playbook-${pb.code}.json`; a.click(); URL.revokeObjectURL(a.href);
+  };
+}
+
+function verwaltenDialog() {
+  const codes = Object.values(D.playbooks).sort((a, b) => b.geaendert - a.geaendert);
+  overlay.innerHTML = `<div class="innen karte">
+    <h2>Playbooks auf diesem Gerät</h2>
+    <table class="tab">${codes.map(p => `<tr><td><span class="code" style="font-size:1rem">${esc(p.code)}</span></td><td>${esc(p.team || '–')}</td><td>${p.spiele.length} Spielzüge</td>
+      <td style="text-align:right">${p.code === D.aktiv ? '<b class="leise">aktiv</b>' : `<button class="knopf klein zweit" data-oeffnen="${esc(p.code)}">Öffnen</button>`}</td></tr>`).join('')}</table>
+    <div class="reihe" style="margin-top:14px">
+      <button class="knopf" id="neuPB">➕ Neues Playbook</button>
+      <label class="knopf zweit" style="cursor:pointer">📂 Datei laden<input type="file" id="ladeDatei" accept=".json,application/json" hidden></label>
+      <button class="knopf zweit" id="linkLaden">🔗 Link einfügen</button>
+    </div>
+    <h3 style="margin-top:16px">Gerät leeren</h3>
+    <p class="klein leise">Löscht alle Playbooks auf diesem Gerät. Sichert vorher euren Link oder die Datei!</p>
+    <div class="reihe"><button class="knopf rot" id="leeren">Alle löschen</button><button class="knopf zweit" id="zu">Schließen</button></div></div>`;
+  overlay.className = 'overlay an';
+  const zu = () => { overlay.className = 'overlay'; zeige('playbook'); };
+  $('#zu').onclick = zu;
+  overlay.querySelectorAll('[data-oeffnen]').forEach(b => b.onclick = () => { D.aktiv = b.dataset.oeffnen; sichern(); zu(); });
+  $('#neuPB').onclick = () => { D.aktiv = null; aktuellesPB(); zu(); };
+  $('#leeren').onclick = () => { if (confirm('Wirklich ALLE Playbooks auf diesem Gerät löschen?')) { D.playbooks = {}; D.aktiv = null; sichern(); zu(); } };
+  $('#linkLaden').onclick = async () => {
+    const l = prompt('Link zum Playbook einfügen:');
+    const m = l && l.match(/#pb=([\w-]+)/);
+    if (m) await importieren(m[1]); else if (l) alert('Das ist kein gültiger Playbook-Link.');
+  };
+  $('#ladeDatei').onchange = async (ev) => {
+    try { const o = JSON.parse(await ev.target.files[0].text()); if (o.format !== 'flag-playbook') throw 0; await importieren(o.code); }
+    catch { alert('Die Datei konnte nicht gelesen werden.'); }
+  };
+}
+
+async function importieren(code) {
+  try {
+    const pb = await entpacken(code);
+    const vorhanden = D.playbooks[pb.code];
+    if (vorhanden && !confirm(`Auf diesem Gerät gibt es schon ein Playbook „${pb.code}“. Mit der Version aus dem Link überschreiben?`)) return;
+    D.playbooks[pb.code] = pb; D.aktiv = pb.code; sichern();
+    overlay.className = 'overlay';
+    pbTab = 'mein';
+    zeige('playbook');
+  } catch { alert('Das Playbook konnte nicht geladen werden. Ist der Link vollständig?'); }
+}
+
+// ---------- Huddle & Druck ----------
+function huddle(start) {
+  const pb = aktuellesPB();
+  if (!pb.spiele.length) { alert('Euer Playbook ist noch leer.'); return; }
+  let i = start;
+  const zeichnen = () => {
+    const e = pb.spiele[i], d = spielDaten(e);
+    overlay.innerHTML = `<div class="innen huddle">
+      <div class="titelzeile"><span class="nummer">#${i + 1}</span><span class="name">${esc(spielName(e))}</span><button class="knopf zweit" id="zu" aria-label="Schließen">✕</button></div>
+      ${feld(d, { label: spielName(e) })}
+      ${d.info ? `<p style="margin-top:8px">${esc(d.info)}</p>` : ''}
+      <div class="reihe" style="justify-content:center;margin-top:12px">
+        <button class="knopf zweit" id="vor">◀</button><button class="knopf" id="play">▶ Abspielen</button><button class="knopf zweit" id="nach">▶▶</button>
+      </div></div>`;
+    overlay.className = 'overlay an';
+    $('#zu').onclick = () => { overlay.className = 'overlay'; };
+    $('#vor').onclick = () => { i = (i - 1 + pb.spiele.length) % pb.spiele.length; zeichnen(); };
+    $('#nach').onclick = () => { i = (i + 1) % pb.spiele.length; zeichnen(); };
+    $('#play').onclick = () => animieren(overlay.querySelector('svg'), d);
+  };
+  zeichnen();
+}
+function drucken() {
+  const pb = aktuellesPB();
+  if (!pb.spiele.length) { alert('Euer Playbook ist noch leer.'); return; }
+  $('#druck').innerHTML = `<h2>Playbook ${esc(pb.team || '')} · Code ${esc(pb.code)}</h2><div class="karten">${pb.spiele.map((e, i) => `<div class="dk"><h3>#${i + 1} ${esc(spielName(e))}</h3>${feld(spielDaten(e), { klein: 1 })}</div>`).join('')}</div>`;
+  setTimeout(() => window.print(), 100);
+}
+
+// ---------- Quiz ----------
+const FRAGEN = [
+  { f: 'Wie viele Punkte gibt es für einen Touchdown?', a: ['6', '3', '7', '2'] },
+  { f: 'Was beendet im Flag Football einen Spielzug der Offense?', a: ['Der ballführenden Person wird die Flagge gezogen.', 'Die ballführende Person wird zu Boden gebracht.', 'Der QB ruft „Stopp“.', 'Nach 10 Sekunden.'] },
+  { f: 'Wie heißt der Wurf des Centers durch die Beine zum QB?', a: ['Shotgun', 'Hand Off', 'Blitz', 'Fumble'] },
+  { f: 'Was passiert, wenn ein Pass auf den Boden fällt?', a: ['Der Versuch ist sofort vorbei.', 'Wer den Ball zuerst hat, bekommt ihn.', 'Die Defense bekommt 2 Punkte.', 'Der Ball darf aufgehoben und weitergespielt werden.'] },
+  { f: 'Wie viele Versuche (Downs) hat die Offense, um über die Mittellinie zu kommen?', a: ['4', '2', '3', 'Unbegrenzt'] },
+  { f: 'Was ist ein „Blitz“?', a: ['Eine Person der Defense läuft nach dem Count direkt auf den QB zu.', 'Ein besonders schneller Pass.', 'Ein Lauf des QB.', 'Eine Strafe für Körperkontakt.'] },
+  { f: 'Aus welchem Abstand zur Line of Scrimmage darf geblitzt werden?', a: ['Mindestens 7 m', 'Mindestens 2 m', 'Direkt an der Linie', 'Mindestens 15 m'] },
+  { f: 'Welche Passroute geht gerade und schnell in die Tiefe?', a: ['Fly (Streak)', 'Hitch', 'Curl', 'Out'] },
+  { f: 'Bei welcher Route läuft der Receiver nach vorne, dreht sich um und kommt zum QB zurück?', a: ['Curl', 'Post', 'Corner', 'Slant'] },
+  { f: 'Was ist ein Vorteil der Zonendeckung?', a: ['Alle können gut mitverteidigen – Schwächen Einzelner fallen weniger ins Gewicht.', 'Sie ist am einfachsten zu verstehen.', 'Man muss am meisten laufen.', 'Man braucht keine Absprache.'] },
+  { f: 'Was ist ein „Safety“ für die Defense?', a: ['2 Punkte, wenn die Offense in ihrer eigenen Endzone gestoppt wird.', 'Ein Pass hinter die Line of Scrimmage.', 'Eine Pause zum Trinken.', '6 Punkte nach einer Interception.'] },
+  { f: 'Was ist beim Flagge-Ziehen richtig?', a: ['Augen auf Flagge oder Bauchnabel, Kopf oben, Arme vor dem Körper.', 'Kopf nach unten und Augen auf die Füße.', 'Mit dem ganzen Körper in die Person laufen.', 'Die Person am Trikot festhalten.'] },
+  { f: 'Was gehört zu den No-Nos?', a: ['Die eigene Flagge mit der Hand schützen', 'Dem QB einen Pass zuwerfen', 'Die gezogene Flagge hochhalten', 'Im Huddle den Spielzug besprechen'] },
+  { f: 'Wie fängst du einen Ball, der über Brusthöhe kommt?', a: ['Daumen und Zeigefinger bilden eine Raute, die Finger einen Korb.', 'Mit den Unterarmen wie beim Baggern.', 'Mit einer Hand von unten.', 'Mit geschlossenen Augen.'] },
+  { f: 'Was ist eine „Interception“?', a: ['Die Defense fängt einen Pass ab.', 'Ein Pass, der ins Aus geht.', 'Eine Ballübergabe zum RB.', 'Ein Touchdown nach einem Lauf.'] },
+  { f: 'Wie viele Punkte bringt der Extraversuch von der 5-m-Linie (nur Pass)?', a: ['1', '2', '3', '6'] },
+];
+function quizSeite() {
+  const fragen = FRAGEN.map(q => ({ ...q, o: [...q.a].sort(() => Math.random() - 0.5) })).sort(() => Math.random() - 0.5).slice(0, 10);
+  let i = 0, punkte = 0;
+  const zeichnen = () => {
+    if (i >= fragen.length) {
+      D.quiz = Math.max(D.quiz || 0, punkte); sichern();
+      bild.innerHTML = `<div class="karte" style="text-align:center"><h1 class="titel-schrift">${punkte} / ${fragen.length}</h1>
+        <p>${punkte === fragen.length ? 'Touchdown! Alles richtig.' : punkte >= 7 ? 'Starke Leistung – fast perfekt.' : punkte >= 5 ? 'Gut! Schau dir die Begriffe nochmal an.' : 'Noch etwas Training nötig – probier es gleich nochmal.'}</p>
+        <p class="leise klein">Bestes Ergebnis auf diesem Gerät: ${D.quiz} / ${fragen.length}</p>
+        <div class="reihe" style="justify-content:center"><button class="knopf" id="nochmal">🔁 Nochmal</button><button class="knopf zweit" id="begriffe">📖 Begriffe</button></div></div>`;
+      $('#nochmal').onclick = quizSeite; $('#begriffe').onclick = () => zeige('glossar');
+      return;
+    }
+    const q = fragen[i];
+    bild.innerHTML = `<div class="karte"><div class="reihe" style="justify-content:space-between"><span class="leise">Frage ${i + 1} von ${fragen.length}</span><span style="color:var(--gelb);font-weight:900">✔ ${punkte}</span></div>
+      <div class="balken"><i style="width:${i / fragen.length * 100}%"></i></div>
+      <h2>${q.f}</h2><div class="optionen">${q.o.map((o, k) => `<button class="option" data-k="${k}">${o}</button>`).join('')}</div><div id="fb"></div></div>`;
+    bild.querySelectorAll('.option').forEach(b => b.onclick = () => {
+      const richtig = q.o[+b.dataset.k] === q.a[0];
+      bild.querySelectorAll('.option').forEach(x => { x.disabled = true; if (q.o[+x.dataset.k] === q.a[0]) x.classList.add('richtig'); });
+      if (!richtig) b.classList.add('falsch'); else punkte++;
+      $('#fb').innerHTML = `<div class="rueckmeldung ${richtig ? 'gut' : 'schlecht'}"><b>${richtig ? '✔ Richtig!' : '✘ Leider nicht.'}</b> ${richtig ? '' : 'Richtig ist: ' + q.a[0]}
+        <div style="margin-top:10px"><button class="knopf" id="weiter">${i + 1 < fragen.length ? 'Weiter →' : 'Ergebnis'}</button></div></div>`;
+      $('#weiter').onclick = () => { i++; zeichnen(); };
+      $('#weiter').focus();
+    });
+  };
+  zeichnen();
+}
+
+// ---------- Start ----------
+(async () => {
+  const m = location.hash.match(/#pb=([\w-]+)/);
+  if (m) {
+    history.replaceState(null, '', location.pathname);
+    zeige('playbook');
+    if (confirm('Ein geteiltes Playbook wurde geöffnet. Jetzt auf diesem Gerät speichern?')) await importieren(m[1]);
+  } else zeige('start');
+})();
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" defer></script>
+</body>
+</html>
